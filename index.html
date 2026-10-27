@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prajwal Ghagre · Game Developer &amp; Author</title>
+<meta name="description" content="Prajwal Ghagre: 20-year-old game developer and author from Nagpur. 9 browser games on itch.io, the book Game On: Unity Edition, the IFERTS 3D fire-safety simulator, workshops and awards.">
+<meta name="theme-color" content="#f6f1e6">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prajwal Ghagre · Game Developer &amp; Author">
+<meta property="og:description" content="Step into my sketchbook: games, a book, a 3D fire-safety simulator, workshops and awards.">
+<meta property="og:url" content="https://prajwalghagre.github.io/">
+<meta property="og:image" content="https://prajwalghagre.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/Caveat.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/PatrickHand.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css?v=bk1">
+<script src="script.js?v=bk1" defer></script>
+<script type="module" src="world.js?v=frontbw"></script>
+<script type="module" src="about.js"></script>
+<script type="module" src="awards.js"></script>
+<script type="module" src="book.js"></script>
+</head>
+<body class="locked">
+<noscript><style>#loader{display:none} body.locked{overflow:auto;height:auto} .room{display:block!important;position:static!important} .room[hidden]{display:block!important}</style></noscript>
+<a class="skip" href="#about">Skip to About</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<filter id="rough1"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="1"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter>
+<filter id="rough2"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter>
+<filter id="rough3"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="13"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter>
+</defs></svg>
+
+<div id="loader" role="status" aria-live="polite">
+  <div class="door door-l"><svg aria-hidden="true"></svg></div>
+  <div class="door door-r"><svg aria-hidden="true"></svg></div>
+  <svg id="crack" aria-hidden="true"><path class="c1" d=""/><path class="c2" d=""/></svg>
+  <div class="ld-center">
+    <svg class="ld-ring" viewBox="-80 -80 160 160" aria-hidden="true">
+      <defs><clipPath id="fillclip"><rect id="fillrect" x="-70" y="70" width="140" height="140"/></clipPath><clipPath id="circclip"><circle r="55"/></clipPath></defs>
+      <g clip-path="url(#circclip)"><g class="hatchfill" clip-path="url(#fillclip)"></g></g>
+      <path class="ring-bg" d=""/><path class="ring-fg" d=""/>
+      <text class="ld-pct" x="0" y="15" text-anchor="middle">0</text>
+    </svg>
+    <div class="ld-txt">sharpening pencils…</div>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="navin">
+    <a class="logo" href="#" data-home><span class="lg" data-sk="circle"><span>PG</span></span><span class="lgt">Prajwal <small>· sketchbook</small></span></a>
+    <nav class="links" aria-label="Rooms"><a href="#about">About</a><a href="#book">Book</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#games">Games</a><a href="#workshops">Teaching</a><a href="#achievements">Awards</a><a href="#social">Social</a></nav>
+    <button class="menu-btn" data-sk="btn" type="button" aria-expanded="false" aria-controls="mob">menu</button>
+  </div>
+</header>
+<nav class="mob" id="mob" aria-label="Rooms menu">
+  <a href="#about"><small>01</small>About</a><a href="#book"><small>✎</small>My Book</a><a href="#experience"><small>02</small>Experience</a><a href="#projects"><small>03</small>Projects</a><a href="#games"><small>04</small>Games</a><a href="#workshops"><small>05</small>Teaching &amp; Workshops</a><a href="#achievements"><small>06</small>Awards &amp; Achievements</a><a href="#social"><small>07</small>Social &amp; Contact</a>
+</nav>
+
+<div id="world" aria-hidden="true"></div>
+<div id="wfade" aria-hidden="true"></div>
+<div id="wui">
+  <div class="wintro" id="wintro"></div>
+  <button class="wprompt" id="wprompt" type="button" hidden><span class="lbl">open the door</span></button>
+  <div class="wdots" id="wdots" aria-label="Rooms"></div>
+  <button class="wphoto" id="wphoto" type="button" data-sk="btn" hidden><span class="ic">🖼</span> look at photos</button>
+  <div class="wpm" id="wpm" hidden>
+    <button class="wpm-back" id="wpmBack" type="button" data-sk="btn">← back to doors</button>
+    <div class="wpm-bar"><button class="wpm-arr" id="wpmPrev" type="button" aria-label="Previous photo">‹</button><div class="wpm-info"><span class="wpm-n" id="wpmN">1 / 16</span><span class="wpm-cap" id="wpmCap"></span><span class="wpm-tip" id="wpmTip"><span class="desk">scroll for next · hold for colour</span><span class="touch">swipe for next · hold for colour</span></span></div><button class="wpm-arr" id="wpmNext" type="button" aria-label="Next photo">›</button></div>
+    <div class="wpm-end" id="wpmEnd" hidden><p>that's all 16 ✎</p><button class="wpm-back2" id="wpmBack2" type="button" data-sk="btn">← back to doors</button></div>
+  </div>
+  <div class="wicons"><button type="button" class="wic" data-sk="btn" id="wmenu" aria-label="Menu">☰</button><a class="wic" data-sk="btn" href="#achievements" aria-label="Awards">🏆</a></div>
+</div>
+<main id="hall" class="hall">
+  <div class="strip hall-strip" id="hallStrip" tabindex="-1">
+    <section class="blk hero" aria-label="Intro">
+      <p class="hello fade f1">✎ hi there, I'm <span class="wave">👋</span></p>
+      <h1 class="name"><span class="ln">Prajwal</span><span class="ln">Ghagre</span></h1>
+      <p class="role fade f2"><b>Game Developer<svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><path data-circ d=""/></svg></b><span class="amp">&amp;</span><b class="au">Author</b></p>
+      <p class="tag fade f3">20, B.Tech AI student from Nagpur. I build games you can play in a browser tab, teach students to make their own, and wrote a book about it.</p>
+      <p class="walk fade f4"><span>walk in &amp; pick a door</span> <svg viewBox="0 0 120 40" aria-hidden="true"><path d="M4 22 C 30 12, 60 30, 104 18 M92 8 L106 18 L94 30"/></svg></p>
+      <canvas id="cube" aria-hidden="true"></canvas>
+      <span class="note fade f4">new: IFERTS paper submitted to ICETEMS 2027 ✎</span>
+    </section>
+    <div class="hall-doors">
+<a class="dblk" href="#about" data-room="about" aria-label="Open the About me room">
+  <span class="sign"><span>About me</span></span>
+  <span class="doorway"><span class="inside" aria-hidden="true"></span><span class="leaf" aria-hidden="true"></span><span class="frame" aria-hidden="true"></span></span>
+  <span class="dcap">who I am, where I study, what I use</span><span class="dnum" aria-hidden="true">01</span></a>
+<a class="dblk" href="#book" data-room="book" aria-label="Open the My Book room">
+  <span class="sign"><span>My book</span></span>
+  <span class="doorway"><span class="inside" aria-hidden="true"></span><span class="leaf" aria-hidden="true"></span><span class="frame" aria-hidden="true"></span></span>
+  <span class="dcap">Game On: Unity Edition</span><span class="dnum" aria-hidden="true">✎</span></a>
+<a class="dblk" href="#experience" data-room="experience" aria-label="Open the Experience room">
+  <span class="sign"><span>Experience</span></span>
+  <span class="doorway"><span class="inside" aria-hidden="true"></span><span class="leaf" aria-hidden="true"></span><span class="frame" aria-hidden="true"></span></span>
+  <span class="dcap">my internships, on a map</span><span class="dnum" aria-hidden="true">02</span></a>
+<a class="dblk" href="#projects" data-room="projects" aria-label="Open the Projects room">
+  <span class="sign"><span>Projects</span></span>
+  <span class="doorway"><span class="inside" aria-hidden="true"></span><span class="leaf" aria-hidden="true"></span><span class="frame" aria-hidden="true"></span></span>
+  <span class="dcap">IFERTS, my research paper &amp; my book</span><span class="dnum" aria-hidden="true">03</span></a>
+<a class="dblk" href="#games" data-room="games" aria-label="Open the Games room">
+  <span class="sign"><span>Games</span></span>
+  <span class="doorway"><span class="inside" aria-hidden="true"></span><span class="leaf" aria-hidden="true"></span><span class="frame" aria-hidden="true"></span></span>
+  <span class="dcap">9 games you can play right now</span><span class="dnum" aria-hidden="true">04</span></a>
+<a class="dblk" href="#workshops" data-room="workshops" aria-label="Open the Teaching and Workshops room">
+  <span class="sign"><span>Teaching &amp; Workshops</span></span>
+  <span class="doorway"><span class="inside" aria-hidden="true"></span><span class="leaf" aria-hidden="true"></span><span class="frame" aria-hidden="true"></span></span>
+  <span class="dcap">IIIT Nagpur &amp; college workshops</span><span class="dnum" aria-hidden="true">05</span></a>
+<a class="dblk" href="#achievements" data-room="achievements" aria-label="Open the Awards room">
+  <span class="sign"><span>Awards</span></span>
+  <span class="doorway"><span class="inside" aria-hidden="true"></span><span class="leaf" aria-hidden="true"></span><span class="frame" aria-hidden="true"></span></span>
+  <span class="dcap">national &amp; international awards + news</span><span class="dnum" aria-hidden="true">06</span></a>
+<a class="dblk" href="#social" data-room="social" aria-label="Open the Social room">
+  <span class="sign"><span>Social</span></span>
+  <span class="doorway"><span class="inside" aria-hidden="true"></span><span class="leaf" aria-hidden="true"></span><span class="frame" aria-hidden="true"></span></span>
+  <span class="dcap">find me &amp; say hi</span><span class="dnum" aria-hidden="true">07</span></a>
+    </div>
+    <section class="blk hall-end" aria-label="End of hallway">
+      <p class="hand big-hand">that's the whole hallway!</p>
+      <p>Pick any door, or go straight to <a href="#social">say hi</a>.</p>
+      <p class="foot">drawn by hand (well, by code) · © 2026 Prajwal Ghagre</p>
+    </section>
+    <svg class="floor" aria-hidden="true"><path d=""/><path class="f2" d=""/></svg>
+  </div>
+  <div class="prog hall-prog" aria-hidden="true"><svg viewBox="0 0 1000 20" preserveAspectRatio="none"><path class="pbg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/><path class="pfg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/></svg></div>
+  <p class="swipe-hint" aria-hidden="true"><span class="desk">scroll · drag · ← →</span><span class="touch">swipe</span> to walk →</p>
+</main>
+
+<section class="room sky-room" id="about" aria-label="About me" hidden>
+  <div class="room-bar"><button class="back btn" data-sk="btn" type="button" data-back><span class="arr" aria-hidden="true">←</span> <span>corridor</span></button></div>
+  <div class="room-strip sky" id="sky" tabindex="-1">
+    <div class="sky-cam" id="skycam">
+
+      <div class="sl sl-hero" data-z="0" data-stop>
+        <svg class="nm" viewBox="0 0 1000 390" role="img" aria-label="Prajwal Ghagre">
+          <defs>
+            <pattern id="nmHatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(40)"><line x1="0" y1="0" x2="0" y2="9" stroke="#1c1c20" stroke-width="2.2"/></pattern>
+            <filter id="nmWob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="7"/></filter>
+          </defs>
+          <g filter="url(#nmWob)" font-family="Inter, Arial Black, sans-serif" font-weight="900" font-size="178" text-anchor="middle" letter-spacing="4">
+            <g transform="translate(11 11)" fill="url(#nmHatch)" opacity=".6"><text x="500" y="168">PRAJWAL</text><text x="500" y="356">GHAGRE</text></g>
+            <g fill="#fff" stroke="#1c1c20" stroke-width="10" stroke-linejoin="round" paint-order="stroke"><text x="500" y="168">PRAJWAL</text><text x="500" y="356">GHAGRE</text></g>
+          </g>
+        </svg>
+        <div class="lazy-me" aria-hidden="true">
+          <canvas class="cloud-bg cb-back" data-cloud="11" data-kind="bank"></canvas>
+          <div class="me-wrap"><svg class="peep" viewBox="-80 46 1322 1944" aria-hidden="true"><!-- Character composed from Open Peeps by Pablo Stanley (openpeeps.com), CC0 1.0 public domain: sitting pose "One Leg Up", hair "Short Messy", face "Smile"; parts taken via the react-peeps package. --><g><g transform="translate(-172 456)"><path d="M667.8 1592.0C684.9 1595.6 702.5 1597.4 720.0 1597.4C748.3 1597.4 776.1 1592.8 802.6 1583.5L802.9 1583.5L803.1 1583.4C818.4 1579.6 836.3 1570.2 842.0 1557.8C844.7 1552.0 844.4 1546.1 841.2 1539.7L840.0 1537.5L840.8 1535.2C852.9 1499.7 782.7 1459.2 736.3 1432.5C722.1 1424.3 709.8 1417.2 701.6 1411.4L689.3 1402.6L704.4 1400.7C707.2 1400.4 708.6 1397.6 708.4 1395.7C708.3 1392.8 704.9 1392.2 702.1 1392.2C699.0 1392.2 693.4 1393.0 684.6 1397.1L681.5 1398.5L678.7 1396.6C674.3 1393.7 669.8 1390.5 664.8 1386.9L652.5 1378.0L667.6 1376.3C728.9 1369.2 848.9 1353 965.0 1323.0C1091.2 1290.4 1179.9 1250.6 1228.4 1204.8L1228.5 1204.6C1267 1170.7 1292.2 1117.9 1292.9 1070.1C1293.4 1036.3 1281.5 1007.0 1258.6 985.4C1225.6 961.5 1181.0 950.0 1122.1 950.0C1080.0 950.0 1036.5 955.6 994.3 961.0C966.6 964.5 940.4 967.9 916.2 969.5L910.7 969.8L909.9 964.5C899.5 896.5 896.6 826.9 893.7 759.6C891.1 695.9 888.3 630.0 879.2 565.7C863.1 442.8 844.9 303.4 800.5 174.1C792.3 151.5 781.3 136.7 766.1 127.5C752.0 118.9 733.6 114.9 708.2 114.9C707.6 114.9 706.1 114.9 706.1 114.9L706.0 114.9C695.5 114.5 684.8 113.6 674.3 112.7C660.5 111.5 646.2 110.3 632.8 110.3C631.1 110.3 629.5 110.3 627.9 110.3C622.1 110.4 617.6 111.3 614.0 112.9L608.4 115.3L606.0 109.8C603.6 104.5 601.5 98.8 599.7 92.8L599.4 92.0L599.5 89.9L599.5 89.8C599.5 82.3 599.5 74.6 598.9 67.1C596.8 42.0 588.5 24.5 573.4 13.7C560.4 4.4 542.7 0.0 517.5 0.0L514.7 0C495.0 0 474.7 0.9 461.3 12.4C454.2 18.4 450.0 28.1 449.6 39.0C449.5 43.3 449.9 47.7 450.3 51.1L450.4 52.3L450.1 53.4C438.8 90.0 421.6 114.8 397.6 129.3L396.1 130.2L393.5 130.2C265.2 130.2 162.6 189.6 104.9 297.5L104.7 297.9L104.4 298.2C93.2 313.8 82.3 330.6 72.2 348.0C70.9 350.9 69.1 353.7 67.3 356.8C59.4 369.6 57.6 375.0 63.0 379.6L66.2 382.3L64.8 386.1C54.1 414.5 44.2 443.7 34.5 471.9C30.2 484.5 25.8 497.5 21.3 510.2C20.0 514.7 18.3 519.2 16.5 523.5L16.5 523.5C12.8 533.1 9.2 542.0 10.3 550.6L10.4 551.6L10.2 552.6C8.2 561.6 9.0 570.4 12.3 576.8L12.6 577.3L12.8 577.9C14.8 585.3 22.7 609.9 39.0 616.5L39.9 616.9L40.7 617.7C52.0 628.0 67.1 636.5 86.9 643.6L92.6 645.6L90.5 651.2C44.7 770.8 26.7 896.9 9.4 1037.6C2.0 1091.9 -4.4 1155.5 3.9 1215.9C13.2 1282.1 38.8 1332.0 82.0 1368.3L83.9 1369.9L84.1 1372.3C85.7 1391.7 97.0 1420.6 121.8 1420.9L124.3 1420.9L126.0 1422.6C132.1 1428.6 138.8 1431.4 147.1 1431.4C158.4 1431.4 170.8 1426.1 182.8 1420.9L183.5 1420.6L183.6 1420.5C216.8 1408.3 253.7 1400.0 296.6 1395.3L299.0 1395.0L301.0 1396.5C301.6 1397.0 302.6 1397.3 303.6 1397.3C305.0 1397.3 306.3 1396.8 307.1 1396.0L308.3 1394.8L310.0 1394.4C313.0 1393.7 316.1 1393.4 319.6 1393.4C327.6 1393.4 335.8 1395.1 343.0 1396.7C348.9 1398.0 354.4 1399.2 358.5 1399.2C363.3 1399.2 363.9 1397.8 364.5 1395.5L365.5 1391.4L369.7 1391.0C385.1 1389.5 400.7 1387.3 415.8 1385.1C429.4 1383.2 443.5 1381.2 457.4 1379.7L471.3 1378.2L462.8 1389.1C452.8 1402.1 452.2 1423.0 461.2 1439.8L462.6 1442.5L461.3 1445.2C452.5 1462.4 454.9 1477.5 468.8 1492.6C481.4 1506.3 501.6 1517.6 517.8 1526.7C520.0 1527.9 522.1 1529.1 524.2 1530.3C565.6 1554.3 614.3 1580.8 667.8 1592.0ZM701.9 970.8C712.8 951.9 717.4 929.6 715.1 906.3C706.8 861.1 705.2 811.6 709.9 750.5C711.3 726.3 712.6 702.1 713.9 677.9C716.9 622.9 720.0 566.0 723.3 510.0L735.2 509.6C739.4 539.8 743.6 570.5 747.8 600.2C763.6 713.2 779.9 829.9 792.8 945.2C793.0 947.3 793.2 949.5 793.4 951.6C794.0 959.4 794.7 966.8 798.1 972.9L802.4 980.4L793.7 981.6C780.1 983.4 763.1 985.7 746.9 985.7C731.0 985.7 717.4 983.6 705.1 979.3L698.3 976.9L701.9 970.8Z" transform="translate(106.9 -77.0)" fill="#ffffff" fill-rule="evenodd" stroke="none"></path><g transform="translate(100 -54)"><path d="M0 0L1304.9 0L1304.9 1579.9L0 1579.9L0 0Z" transform="translate(0 0.0)" fill="none" stroke="none"></path><g><path d="M999.5 931.8C1092.6 919.8 1198 906.3 1268.4 957.5C1335.9 1020.7 1300.3 1131.1 1238.5 1185.7C1126.1 1291.8 829.6 1340.9 674.3 1358.8C678.8 1362.0 683.4 1365.2 688.0 1368.3C726.4 1350.7 725.9 1381.4 711.1 1383.2C719.1 1388.9 731.3 1395.9 745.3 1404.0C794.6 1432.4 866.1 1473.6 852.5 1513.7C866.3 1540.7 833.8 1559.9 810.6 1565.7C766.4 1581.1 718.3 1584.0 672.5 1574.4C620.4 1563.4 572.8 1538.4 527.2 1512.0C525.1 1510.8 523.0 1509.6 520.8 1508.4C487.0 1489.5 439.6 1463.0 461.9 1419.2C452.6 1401.9 451.7 1378.2 464.0 1362.2C434.7 1365.3 405.7 1370.6 376.3 1373.5C373.6 1384.8 361.7 1382.2 347.7 1379.1C337.8 1377 326.8 1374.6 317.4 1376.7C313.8 1380.4 307.2 1380.9 303.2 1377.8C265.6 1381.9 227.8 1389.3 191.7 1402.7L191.1 1402.9C169.9 1412.1 146.8 1422.1 127.7 1403.4C100.0 1403.1 86.0 1373.0 84.1 1349.4C-14.3 1266.8 -6.1 1127.8 9.5 1013.5C25.5 882.8 43.5 749.5 90.8 625.9C73.1 619.5 56.1 611.0 42.6 598.7C26.8 592.2 17.2 571.6 12.9 556.2C8.5 547.6 8.4 537.0 10.3 528.1C9.1 518.0 13.0 508.0 16.9 498.2C18.6 493.8 20.3 489.5 21.6 485.2C36.0 443.8 49.7 402.0 65.1 360.9C54.8 352.2 61.9 340.7 68.1 330.5C69.9 327.6 71.7 324.7 72.9 322.1C82.9 304.9 93.7 287.9 105.5 271.6C165.7 159.2 272.3 100.8 400.4 101.1C435.6 79.9 449.7 37.7 457.5 0C470.0 48.5 440.1 112.3 386.9 127.4C394.5 138.3 400.5 150.4 407.4 161.8C443.1 218.9 528.3 243.3 589.9 216.5C625.2 197.8 633.1 154.8 631.8 118.8C615.7 136.0 601.8 92.1 599.5 80.9C596.3 65.4 596.9 49.1 602.8 34.3C603.2 33.2 604.6 33.4 604.7 34.5C606.7 51.6 610.5 68.5 617.5 84.3C622.4 82.1 628.2 81.4 633.7 81.3C648.9 80.9 664.9 82.3 680.8 83.6C691.3 84.5 701.9 85.4 712.2 85.8C763.2 85.4 794.2 100.0 812.2 148.9C855.6 275.6 873.8 409.5 891.1 541.7C909.9 674.0 901.6 808.2 921.8 940.3C945.8 938.7 972.1 935.3 999.5 931.8ZM368.6 113.2C259.8 128.3 162.7 197.7 115.1 295.4C105.7 313.0 97.6 331.2 90.2 349.6C131.4 356.1 171.3 368.7 209.6 384.8C212.2 386.3 216.3 388.0 221.1 389.9C234.1 395.2 251.2 402.1 250.3 411.2C273.7 384.3 293.4 354.7 313.2 325.4C318.5 323.5 306.2 347.3 300.3 358.8C298.8 361.7 297.7 363.8 297.4 364.6C279.2 399.2 258.4 433.6 231.1 461.9C233.6 464.5 238.4 467.2 243.6 470.2C253.4 475.8 264.5 482.1 264.1 489.0C347.5 539.8 425.8 598.2 500.0 661.3C502.5 659.8 505.8 659.6 508.6 662.1C599.9 737.7 607.9 862.3 596.8 971.3C687.8 985.6 721.7 943.4 702.5 857.4C696.8 818.2 699.2 778.5 701.5 739.1C701.6 736.6 701.8 734.0 701.9 731.5C709.0 617.6 713.8 503.6 722.1 389.7C724.1 361.5 728.9 333.6 735.1 306.0C735.3 304.6 737.5 305.0 737.6 306.4C740.8 333.6 742.4 360.9 741.3 388.3C766.3 364.2 805.3 344.3 840.2 340.6C825.6 278.2 817.9 158.1 774.5 113.4C763.5 103.6 748.8 100.5 734.6 98.3C704.9 93.8 675.4 89.1 645.8 84.3C648.1 85.8 649.9 88.2 650.1 91.7C655.0 143.2 647.3 210.1 593.0 233.6C524.6 259.5 433.5 233.5 396.5 169.5C389.8 156.7 386.3 141.9 379.8 129.1C379.2 129.2 378.6 129.2 377.9 129.3C376.4 125.6 375.2 121.8 373.6 118.1C374.9 115.1 370.9 112.4 368.0 114.6C368.3 114.2 368.6 113.9 369.0 113.5C368.9 113.4 368.7 113.3 368.6 113.2ZM623.6 96.1C622.3 94.0 621.1 91.8 620.0 89.5C623.9 89.7 627.6 89.8 631.4 90.5C631.3 94.5 631.4 98.5 631.5 102.5C631.6 104.6 631.6 106.8 631.7 108.9C629.8 104.4 626.0 100.3 623.6 96.1ZM23.6 531.1C21.7 549.0 31.4 566.0 43.7 579.3C64.0 599.9 92.7 608.9 120.1 616.4C188.5 635.1 256.9 653.8 325.3 672.8C351.0 680.1 377.1 686.3 402.6 694.5C414.1 698.2 428.6 699.1 434.5 710.8C434.6 710.7 434.7 710.3 434.8 709.9C436.6 705.0 443.3 685.7 445.2 693.8C437.8 713.5 439.6 735.8 442.8 756.3C445.6 774.8 448.8 793.3 449.8 812.1C449.3 831.6 447.6 851.0 445.9 870.5C442.5 908.8 439.2 947.1 444.6 985.7C465.4 970.8 463.3 940.5 469.0 918.2C471.6 904.9 474.5 891.7 477.6 878.6C479.4 870.4 493.0 872.2 492.4 880.5C490.8 901.2 490.6 921.9 490.1 942.6C490.4 945.8 490.1 951.1 489.7 957.1C488.9 970.2 487.9 986.3 493.3 990.0C503.5 994.7 506.9 974.9 509.2 961.9C509.8 958.0 510.4 954.7 511.0 952.9C515.4 932.4 519.5 912.0 523.3 891.4C524.6 884.2 536.3 886.1 536.1 893.2C535.2 915.5 534.3 937.8 533.4 960.2C533.3 962.4 533.1 964.7 532.9 967.1C532.0 980.2 530.8 996.5 540.5 1005.5C548.6 997.8 549.0 986.1 549.5 975.0C549.6 970.5 549.8 966.1 550.5 962.1C552.4 940.3 554.3 918.5 556.2 896.6C556.9 888.6 569.6 888.4 569.2 896.6C568.1 925.5 569.0 957.0 575.1 984.1C575.4 986.0 575.8 987.9 576.2 989.8C576.5 989.5 576.7 989.1 577.0 988.8C576.1 987.4 575.5 985.9 575.4 984.2C583.2 983.9 585.4 969.7 584.2 962.7C585.0 953.3 585.0 943.8 585.4 934.5C587.3 886.8 587.2 838.2 574.3 791.7C555.2 720.0 512.3 684.2 456.5 639.9C381.9 577.5 300.4 522.7 221.5 466.6C216.5 467.7 213.2 463.4 213.9 458.7C217.0 444.1 235.4 430.9 244.3 418.3C237.9 419.8 231.9 416.0 226.3 412.4C224.8 411.5 223.3 410.5 221.9 409.7C215.4 406.1 208.8 402.5 202.1 399.1C165.9 380.2 127.6 365.9 88.5 353.9C70.2 401.1 54.6 449.2 37.7 496.9C33.4 508.3 31.0 521.2 23.6 531.1ZM813.4 922.4C815.2 933.6 817.0 944.9 814.9 955.9C843.4 950.7 871.9 945.9 900.6 942.7C879.9 805.4 892.1 665.5 870.7 528.0C863.9 472.5 854.0 417.5 844.1 362.5C807.6 368.9 772.2 381.7 740.9 401.4C740.3 418.8 739.5 436.2 738.5 453.6C744.9 482.3 750.5 511.1 756.0 540.0C778.6 660.8 795.7 782.5 811.1 904.4C811.5 910.3 812.4 916.4 813.4 922.4ZM728.0 888.1C718.6 837.0 718.9 785.2 722.9 733.5C727.3 653.3 731.6 573.2 736.2 493.1C756.2 638.1 777.5 783.0 793.8 928.5C794.9 938.6 794.7 949.3 799.9 958.3C771.6 962.1 741.5 965.9 714.1 956.3C726.1 935.5 730.4 911.8 728.0 888.1ZM43.3 890.9C40.3 909.4 37.5 928.0 35.0 946.7C71.0 843.4 117.1 743.7 173.6 649.8C147.6 642.2 121.1 635.8 95.3 627.4C80.4 715.6 55.4 802.1 43.3 890.9ZM247.0 859.3C242.1 835.7 236.5 811.6 234.0 787.6C233.8 786.5 235.5 786.4 235.8 787.4C239.9 800.7 242.8 814.4 246.3 827.9C249.8 841.4 253.0 855.0 256.5 868.5C257.6 872.9 258.7 877.2 259.8 881.5C260.5 881.5 261.1 881.5 261.8 881.6C264.3 881.6 265.1 884.8 263.1 886.1C262.5 886.5 261.9 886.8 261.3 887.2C271.9 928.3 282.7 969.4 294.5 1010.3C308.3 1057.9 323.9 1104.9 336.3 1152.9C336.6 1154.0 336.0 1154.8 335.3 1155.2C341.8 1177.0 347.2 1199.1 353.1 1221.1C354.3 1225.7 347.5 1228.7 345.2 1224.4C341.6 1217.8 340.9 1208.8 339.1 1201.5C337.2 1193.3 335.3 1185.1 333.4 1176.9C330.5 1163.9 327.8 1150.7 325.6 1137.4C317.4 1116.9 310.1 1096.1 303.6 1075C289.1 1027.5 275.8 979.8 263.8 931.7C260.3 917.5 256.9 903.3 253.6 889.0C247.7 889.1 241.6 886.5 235.6 883.9C226.3 879.9 217.0 875.9 207.9 881.3C207.2 881.7 206.5 880.8 207.1 880.2C213.1 874.2 221.4 873.6 229.4 875.1C234.7 876.1 239.7 878.0 244.8 879.4C247.1 880.0 249.4 880.4 251.7 880.8C250.1 873.6 248.5 866.5 247.0 859.3ZM559.4 1126.2C557.0 1114.1 555.0 1101.8 553.1 1089.6C552.8 1087.1 552.3 1084.5 551.9 1081.9C550.3 1072.5 548.7 1062.7 549.1 1053.4C549.1 1052.9 549.8 1052.8 549.9 1053.3C553.7 1065.1 554.9 1078.2 557.3 1090.4C559.6 1102.2 562.2 1114.0 564.8 1125.7C570.1 1149.8 577.6 1173.6 582.2 1197.8C582.6 1200.4 579.1 1201.4 578.2 1198.9C569.1 1175.7 564.4 1150.5 559.4 1126.2ZM870.1 1063.0C848.5 1068.8 826.8 1074.3 805.1 1079.3C766.3 1088.3 727.6 1097.4 688.9 1106.8C669.6 1111.5 650.3 1116.1 631.0 1121C621.9 1123.3 612.8 1125.8 603.9 1128.8C599.4 1130.3 595.1 1132.0 590.7 1133.7C589.9 1134.0 589.2 1134.4 588.4 1134.7C585.4 1136.0 582.4 1137.3 579.1 1137.1C578.8 1137.0 578.7 1136.8 578.8 1136.6C581.0 1132.5 585.5 1130.6 589.5 1128.6C593.9 1126.3 598.5 1124.4 603.1 1122.5C613.3 1118.4 623.9 1115.4 634.5 1112.5C673.1 1101.9 712.0 1092.4 750.8 1082.9C789.8 1073.3 828.8 1064.2 868.4 1057C872.4 1056.2 874.1 1061.9 870.1 1063.0ZM98.9 1348.2C97.4 1326.5 101.0 1299.5 117.1 1283.3C153.9 1252.2 205.4 1242.4 251.4 1231.2C272.8 1226.9 294.5 1224.1 316.3 1222.7C318.0 1222.6 319.9 1222.6 321.8 1222.6C328.2 1222.5 335.0 1222.4 339.3 1217.6C342.1 1224.2 344.9 1230.9 347.8 1237.5C256.3 1225.5 65.4 1267.2 118.8 1392.5C107.5 1380.3 100.0 1365.3 98.9 1348.2ZM317.7 1270.5C337.6 1266.2 359.1 1278.7 370.8 1293.9C372.9 1296.5 374.7 1299.4 376.3 1302.4C368.5 1285.1 360.9 1267.8 353.3 1250.4C273.6 1243.3 138.5 1254.5 121.4 1350.0C120.2 1366.2 124.6 1385.1 137.8 1396.0C150.7 1406.8 165.8 1400.3 179.9 1394.3C184.4 1392.4 188.8 1390.5 193.1 1389.2C217.9 1380.6 243.4 1374.2 269.3 1369.9C268.8 1350.4 268.3 1330.6 263.9 1311.7C272.6 1294.4 289.2 1361.6 288.9 1367.1C292.5 1366.7 296.1 1366.3 299.6 1365.9C299.0 1346.2 298.9 1326.2 301.6 1306.7C301.7 1305.9 302.8 1305.7 303.1 1306.5C306.9 1316.3 310.0 1326.5 312.7 1336.7C316.3 1345.6 313.7 1358.4 324.0 1363.0C334.5 1367.3 346.0 1368.0 356.9 1370.9C359.0 1370.8 361.2 1370.6 363.2 1370.1C366.6 1369.3 365.7 1364.6 362.8 1364.1C363.1 1363.5 363.3 1362.8 363.5 1362.0C364.1 1362.0 364.6 1361.9 365.2 1361.9C363.7 1355.8 365.3 1349.5 366.9 1343.3C368.4 1337.4 369.9 1331.4 368.8 1325.4C367.9 1297.9 344.4 1276.7 317.7 1273.1C316.3 1272.8 316.4 1270.7 317.7 1270.5ZM551.2 1326.5C555.6 1318.6 561.9 1311.2 569.5 1306.2C562.8 1297.0 557.7 1287.0 553.4 1276.5C529.1 1300.3 487.1 1309.2 455.4 1321.2C457.9 1323.8 460.3 1326.3 462.7 1328.9C496.8 1365.4 524.9 1395.5 551.2 1326.5ZM385.7 1323.4C385.1 1324.7 384.2 1326.1 384.2 1327.7C383.6 1322.2 382.3 1316.8 380.4 1311.6C382.2 1315.5 384.0 1319.4 385.7 1323.4ZM683.9 1388.3C682.2 1388.7 680.4 1389.2 678.7 1389.6C667.5 1392.6 656.6 1396.8 646.0 1401.5C645.1 1401.9 644.4 1401.0 645.0 1400.2C651.8 1391.9 660.3 1384.3 669.7 1378.1C660.0 1370.7 650.6 1362.7 642.1 1354.1C630.3 1357.2 619.5 1361.8 608.6 1367.5C599.5 1367.5 630.2 1344.7 633.2 1344.6C624.6 1335.0 618.3 1324.1 610.9 1313.6C610.7 1314.5 610.3 1315.6 609.8 1316.3C603.3 1310.4 593.4 1311.5 585.6 1316.8C570.8 1321.7 565.4 1338 559.1 1350.0C540.9 1389.9 504.7 1392.6 476.2 1360.6C446.2 1415.6 519.3 1448.1 560.9 1464.6C593.7 1479.0 630.0 1495.0 663.0 1509.5C673.2 1514.1 683.3 1518.9 694.5 1520.6C724.9 1527 756.5 1526.0 787.0 1520.4C796.4 1518.7 805.8 1516.6 815.0 1514.1C820.3 1512.6 828.7 1511.6 832.2 1507.2C839.3 1481.6 775.1 1443.9 727.5 1416C708.3 1404.7 691.9 1395.0 683.9 1388.3ZM388.3 1359.9C390.9 1359.6 393.6 1359.3 396.2 1359.0C419.8 1356.0 443.3 1351.8 467.0 1349.7C460.5 1341.3 455.2 1332.2 450.2 1322.9C437.5 1326.9 424.7 1330.6 411.9 1334.1C402.9 1337.4 388.8 1340.8 384.4 1329.5C385.2 1337 384.6 1344.5 383.1 1351.9C386.5 1353.0 388.6 1356.4 388.3 1359.9ZM819.2 1544.4C713.2 1592.1 600.9 1539.0 510.5 1482.5C489.6 1470.8 462.2 1454.3 466.4 1426.9C481.8 1449.4 507.1 1462.2 531.4 1473.3C572.3 1491.7 613.4 1509.6 654.4 1527.9C658.3 1540.7 676.8 1541.2 687.9 1544.0C737.7 1553.7 791.2 1548.9 838.1 1529.6C835.3 1537.7 826.5 1541.4 819.2 1544.4Z" transform="translate(-0.0 0.0)" fill="#1c1c20" fill-rule="evenodd" stroke="none"></path></g></g></g><g transform="translate(225 0)"><g><g><path d="M185.6 0C242.4 0 301.1 44.0 321.9 72.0C339.4 95.7 348.8 202.4 348.8 274.6C348.8 289.7 357.1 318.1 354.7 332.6C345.8 385.5 307.0 429.8 230.2 429.8C153.4 429.8 98.3 399.4 41.3 317.7C13.6 317.7 0.1 296.4 0.0 262.9C-0.1 229.4 26.7 217.2 26.7 217.2C26.7 217.2 17.1 84.9 41.3 50.5C65.4 16.0 128.8 -8.2e-15 185.6 0Z" transform="translate(56.4 75.2)" fill="#ffffff" stroke="none"></path><path d="M274.4 7.2C239.1 0.9 203.9 -2.0 168.1 1.5C150.6 3.3 133.1 6.2 116.1 10.8C101.2 14.8 84.2 19.6 71.3 28.8C66.4 22.4 58.5 17.1 50.2 19.6C41.3 22.3 39.9 30.1 41.6 38.1C41.8 38.9 42.0 39.4 42.1 39.7C42.3 40.1 42.3 40.2 41.9 40.5L41.4 40.8C39.7 41.7 37.7 41.9 36.0 43.0C32.9 45.0 30.9 48.3 30.0 51.8C28.0 59.5 31.8 66.1 36.5 71.8C19.9 95.9 10.5 124.3 6.8 153.2C4.8 168.6 4.4 184.4 5.9 199.8C6.6 207.2 7.4 214.6 8.9 221.8C10.3 227.9 12.4 233.7 14.7 239.6L15.0 240.3C6.8 247.5 1.8 258.5 0.5 269.1C-1.6 286.7 3.3 308.3 13.3 323.0C16.2 327.4 19.8 331.3 23.9 334.4C22.4 337.2 21.2 340.3 20.1 343.1L19.7 344.1C17.8 349.0 15.7 354.8 17.8 359.9C20.1 365.5 26.3 366.7 31.4 364.0C32.0 363.7 32.7 363.3 33.3 363.0C34.5 363.0 35.8 362.8 37.0 362.6C38.4 367.0 41.1 371.1 44.7 373.6C51.5 378.2 61.4 377.8 68.2 373.1C75.1 384.3 83.8 394.4 93.4 403.2L93.6 403.4C94.0 403.8 94.4 404.1 94.8 404.5C99.9 409.3 106.3 415.3 113.5 412.4C120.6 409.6 119.4 401.2 115.1 396.4C110.7 391.4 104.8 387.5 100.0 382.8C94.9 377.9 90.0 372.9 85.3 367.6C80.4 362.0 75.5 356.3 70.5 350.7C67.8 347.7 65.0 344.8 62.4 341.7C61.3 340.1 60.2 338.6 59.1 337.2L57.6 335.1C57.7 334.9 57.9 334.7 58.0 334.4C60.1 330.9 58.0 327.1 54.5 325.8C49.3 323.9 43.7 324.5 38.6 322.4C33.4 320.4 29.5 316.2 26.6 311.5C20.1 300.9 16.3 286.9 16.4 274.5C16.5 263.9 20.8 252.3 30.3 246.7C34.5 244.3 41.3 243.2 47.3 244.2C49.9 246.4 52.7 248.4 55.0 250.9L54.7 251.6C54.4 252.2 55.4 252.8 55.8 252.3L56.0 252.1C56.7 252.9 57.3 253.7 57.9 254.7C60.5 259.3 61.7 264.3 67.4 266.2C71.0 267.5 74.5 266.6 78.0 265.7C79.5 265.3 81.0 264.9 82.5 264.7C86.8 264.1 88.8 258.8 87.9 255.2C85.4 243.8 83.1 232.5 80.3 221.2L79.3 217.4C86.1 205.8 92.3 193.8 98.3 181.7C98.5 184.0 98.7 186.3 99.0 188.5C99.4 192.4 104.7 196.2 107.9 192.2C118.1 179.1 128.4 166.4 137.0 152.1C142.7 142.5 147.8 132.5 152.3 122.3C152.7 123.8 153.2 125.4 153.8 126.8C155.5 131.6 159.9 135.0 165.2 133.6C170.2 132.2 173.2 127.5 175.5 123.3L177.8 118.9C179.3 116.0 180.8 113.2 182.3 110.3C189.9 120.0 199.2 128.2 210.0 134.5C212.7 136.1 216.9 134.7 217.6 131.4C219.3 122.8 221.0 114.2 222.6 105.6C237.0 116.0 252.2 125.3 268.1 133.4C271.6 135.2 276.1 133.0 276.2 128.7C276.2 121.9 276.7 115.1 278.0 108.4C285.0 113.8 292.7 117.8 301.1 120.4C309.1 122.9 317.8 124.0 326.1 123.2C326.2 123.2 326.3 123.2 326.3 123.2L327.6 123.9L327.8 124.0C330.0 125.2 332.2 124.6 333.7 123.3C337.7 153.6 344.5 183.4 347.1 214.0C348.5 230.7 349.2 247.5 349.0 264.2C348.9 272.3 348.6 280.4 348.1 288.4C347.6 295.5 346.4 302.7 345.9 309.8C344.1 311.8 343.2 314.6 344.0 317.5C346.6 326.3 350.7 334.2 351.7 343.5C352.6 352.6 351.8 361.9 349.5 370.8C345.0 388.2 334.8 404.3 320.6 415.4C291.1 438.6 249.8 447.3 213.0 442.1C191.8 439.2 172.2 433.0 155.3 419.3C154.9 418.9 154.1 419.4 154.5 420.0C178.0 456.7 224.7 465.5 265.1 458.9C308.7 451.8 352.1 424.4 366.5 381.0C370.3 369.5 372.0 357.0 370.9 345.0C370.0 335.2 368.0 324.4 362.8 315.7C364.3 307.4 364.4 298.7 364.8 290.3L364.9 287.4C365.2 279.7 365.3 272.0 365.3 264.2C365.2 247.1 364.1 230.0 361.9 213.1C358.9 189.2 354.7 164.7 346.5 141.9C348.7 141.4 350.8 139.4 351.0 137.0C351.6 129.8 350.6 122.7 348.4 116.0C353.5 113.6 357.9 110.1 359.0 104.1C359.5 101.1 359.0 98.1 357.8 95.6C366.2 87.6 373.4 76.3 372.9 65.1C372.5 57.7 367.1 52.2 359.9 51.2C358.5 51.0 357.1 51.0 355.8 51.1C356.4 49.5 357.0 47.9 357.4 46.2C358.8 39.6 356.3 32.5 350.1 29.2C345.3 26.7 339.9 27.5 334.9 29.1L334.1 29.3C334.7 28.3 335.3 27.3 335.8 26.2C338.6 20.8 335.2 14.8 329.1 14.5C312.5 13.6 295.8 12.4 279.2 11.6C278.6 9.5 277.1 7.7 274.4 7.2ZM41.0 261.7C34.9 260.6 28.7 264.7 28.8 271.2C28.8 272.2 30.2 272.4 30.4 271.4L30.5 271.2C31.2 269.4 34.0 268.8 35.6 269.2C36.4 269.4 37.0 269.9 37.7 270.5L38.1 270.8C40.0 272.5 41.2 274.7 42.6 276.7L42.9 277.2C45.9 281.8 48.9 286.8 53.5 289.9C60.3 294.4 67.5 285.8 64.1 279.4C61.7 275.0 57.2 271.7 53.3 268.6L51.8 267.4C48.5 264.9 45.1 262.4 41.0 261.7Z" transform="translate(50.0 54.9)" fill="#1c1c20" fill-rule="evenodd" stroke="none"></path></g></g><g transform="translate(159 186)"><g><path d="M140.6 0.4L139.1 0.1C137.5 -0.1 135.8 -0.0 134.3 0.5C132.8 1.1 131.5 2.2 130.6 3.7C129.4 5.7 129.3 7.3 129.8 9.5C130.3 11.3 131.2 12.5 132.4 13.5C133.7 14.4 135.3 15.0 137.0 15.2C144.8 16.1 152.5 17.8 159.9 20.3C163.4 21.4 166.7 23.0 170.0 24.6L172.8 26.0C175.4 27.2 178.1 28.4 181.5 29.3C181.8 29.4 182.0 29.5 182.3 29.5C183.2 29.2 183.4 28.9 183.6 28.6L183.7 28.5C183.9 28.2 184.2 27.8 183.9 25.6C176.5 10.2 156.2 3.7 140.6 0.4ZM43.5 4.8L45.4 4.5C51.2 3.4 58.4 2.5 62.6 7.2C64.7 9.6 65.5 14.2 62.6 16.6C58.7 19.7 54.6 19.6 50.2 19.5C48.7 19.5 47.1 19.4 45.5 19.5C40.4 19.8 35.6 20.6 30.7 22.0C19.9 25.1 11.1 30.7 2.0 36.9C0.8 37.7 -0.4 36.2 0.1 35.0C5.4 24.6 15.7 16.1 26.0 10.9C31.5 8.1 37.5 5.8 43.5 4.8ZM29.9 50.1C30.7 39.7 46.5 37.4 48.1 47.6C49.5 56.8 47.8 65.2 43.7 73.5C39.8 81.4 29.8 77.7 29.1 70.5C28.3 63.4 28.9 59.2 29.4 54.9C29.6 53.3 29.8 51.8 29.9 50.1ZM159.2 41.8C155.4 40.7 152.2 42.6 150.0 45.5C149.7 45.8 149.5 46.2 149.3 46.5C142.5 52.8 145.1 65.6 150.5 72.0C153.8 75.9 161.1 74.8 163.4 70.3C167.5 62.1 171.0 45.2 159.2 41.8ZM128.7 119.0C136.8 107.6 125.3 96.9 117.8 92.3C115.8 90.9 117.4 86.2 121.6 86.9C160.0 93.5 140.1 159.7 91.1 123.4C85.2 118.7 92.3 108.3 98.6 112.3C98.9 112.6 99.2 112.8 99.6 113.1C106.7 118.6 119.6 128.6 128.7 119.0ZM93.5 188.9C86.8 186.1 80.8 181.6 76.4 175.7C74.9 173.7 74.5 171.5 74.8 169.6C75.2 167.4 76.5 165.4 78.3 164.0C80.1 162.7 82.3 162.0 84.5 162.4C86.3 162.7 88.2 163.7 89.7 165.8L90.0 166.2C92.6 169.8 96.0 172.7 99.9 174.5C103.6 176.3 107.8 177.2 112.1 176.7C120.3 175.7 126.0 171.3 132.0 165.3C132.7 164.5 133.5 163.7 134.2 162.9C134.7 162.2 135.4 161.7 136.1 161.5C136.9 161.2 137.8 161.2 138.7 161.5C139.5 161.8 140.2 162.3 140.7 163.0C141.2 163.7 141.4 164.6 141.3 165.5C140.8 171.8 137.5 177.4 132.9 181.8C127.7 186.6 120.9 190.0 114.4 191.2C107.3 192.5 100.1 191.5 93.5 188.9Z" transform="translate(53.0 52.0)" fill="#1c1c20" fill-rule="evenodd" stroke="none"></path></g></g><g transform="translate(123 338)"></g><g transform="translate(47 241)"></g></g></g></svg></div>
+          <svg class="pad" viewBox="0 0 90 56" fill="#fff" stroke="#1c1c20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14 C26 6 64 6 76 14 C86 22 92 44 82 50 C74 55 66 44 58 38 L32 38 C24 44 16 55 8 50 C-2 44 4 22 14 14 Z"/><path d="M22 20 v12 M16 26 h12" fill="none"/><circle cx="64" cy="22" r="3.4" fill="#1c1c20" stroke="none"/><circle cx="72" cy="29" r="3.4" fill="#e04a3a" stroke="none"/><path d="M38 24 h4 M48 24 h4" fill="none" stroke-width="2.4"/><path d="M30 6 C34 -4 50 -6 56 2" fill="none" stroke-width="2" opacity=".5"/></svg>
+          <canvas class="cloud-bg cb-front" data-cloud="12" data-kind="front"></canvas>
+          <svg class="zz" viewBox="0 0 60 50" fill="none" stroke="#8d8d94" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 40 q6 -12 14 -4 q8 8 14 -6"/><path d="M30 14 l6 -8 l6 8 l-6 8 z"/><path d="M50 30 h8 M54 26 v8"/></svg>
+        </div>
+        <p class="tagline">Game Developer &amp; Author</p>
+        <p class="quote">“I build games you can play in a browser tab.”</p>
+      </div>
+
+      <div class="sl sl-card" data-z="-1800" data-stop>
+        <article class="cl-card">
+          <canvas class="cloud-bg" data-cloud="21" data-kind="card"></canvas>
+          <p class="kick">about me ✎</p>
+          <h2 class="cl-h">Hi, I'm Prajwal</h2>
+          <p>Engineering was never my dream. I started in Electrical Engineering, switched to <mark>Artificial Intelligence</mark> in my second year, and a game-development workshop in my 4th semester changed everything.</p>
+          <p>I was picked from around 180 students for a game-dev internship and learned Unity by shipping: a racing game first, then a puzzle game, then more. Now I make small, fun games you can play in a browser tab and teach students to make their own.</p>
+        </article>
+      </div>
+
+      <div class="sl sl-card" data-z="-3400" data-stop>
+        <article class="cl-card cl-book">
+          <canvas class="cloud-bg" data-cloud="33" data-kind="card"></canvas>
+          <p class="kick">plot twist</p>
+          <h2 class="cl-h">I'm a technical author too</h2>
+          <div class="book-row">
+            <figure class="bk"><span class="tape"></span><img src="assets/book_sketch.jpg" alt="Pencil sketch of the cover of Game On: Unity Edition" width="400" height="640" loading="lazy"></figure>
+            <div>
+              <p>At <b>20</b>, I self-published my first book, <b>Game On: Unity Edition</b>: a beginner-friendly, hands-on guide to making games in Unity, from zero to a portfolio of shipped games.</p>
+              <a class="sky-btn" href="https://www.amazon.in/Game-Developers-Building-Portfolio-Scratch-ebook/dp/B0FLWH1KC5" target="_blank" rel="noopener">get it on Amazon →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="sl sl-card" data-z="-5000" data-stop>
+        <article class="cl-card cl-bag">
+          <canvas class="cloud-bg" data-cloud="45" data-kind="card"></canvas>
+          <p class="kick">education · now</p>
+          <div class="bag-row">
+            <svg class="bag" viewBox="0 0 140 170" aria-hidden="true" fill="none" stroke="#1c1c20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M52 30 C52 12 88 11 89 30" /><path d="M56 31 C57 18 84 17 85 31" opacity=".5"/>
+              <path d="M28 48 C27 34 40 29 70 30 C100 30 113 35 112 50 L116 150 C116 160 108 163 70 163 C33 164 24 160 24 149 Z" fill="#fff"/>
+              <path d="M30 50 C40 72 100 73 110 51" /><path d="M31 54 C44 74 98 76 109 55" opacity=".45"/>
+              <path d="M66 70 l0 12 l8 0 l0 -12" />
+              <path d="M40 100 C40 92 100 92 101 100 L102 140 C102 147 40 148 39 140 Z" fill="#fff"/>
+              <path d="M42 112 C60 116 84 116 100 112" /><path d="M52 106 l2 0" />
+              <path d="M24 70 C10 76 10 120 22 132" opacity=".7"/><path d="M116 70 C130 78 130 118 118 132" opacity=".7"/>
+              <g opacity=".35" stroke-width="1.6"><path d="M28 150 l14 -14 M34 158 l22 -22 M46 160 l18 -18 M90 160 l20 -20"/></g>
+              <rect x="50" y="118" width="40" height="13" rx="3" fill="#fff" stroke-width="2"/><path d="M55 124.5 h30" stroke-width="1.4" opacity=".5"/>
+              <path d="M96 30 L122 4" stroke-width="7" stroke="#2f6fd6"/><path d="M96 30 L122 4" stroke-width="2"/><path d="M92 36 l4 -6 l3 3 z" fill="#1c1c20"/>
+            </svg>
+            <div class="edu-txt">
+              <h2 class="cl-h">College bag</h2>
+              <p class="deg">B.Tech, Artificial Intelligence</p>
+              <p>G H Raisoni College of Engineering &amp; Management, Nagpur</p>
+              <p class="yrs">2022 → 2027</p><p class="cg">CGPA 8.5+ <span>· 9.0 in 1st year</span></p>
+              <p class="sm">started in Electrical, switched to AI in my 2nd year</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="sl sl-card" data-z="-6600" data-stop>
+        <article class="cl-card cl-bag cl-school">
+          <canvas class="cloud-bg" data-cloud="52" data-kind="card"></canvas>
+          <p class="kick">before college</p>
+          <div class="bag-row">
+            <div class="edu-txt">
+              <h2 class="cl-h">School bag</h2>
+              <div class="sch"><p class="slv">12th · Higher Secondary</p><p>Yashoda Public Higher Secondary College, Nagpur</p><p class="sm">State Board</p></div>
+              <div class="sch"><p class="slv">10th · Secondary School</p><p>Yashoda Public High School, Nagpur</p><p class="sm">Maharashtra State Board</p></div>
+            </div>
+            <svg class="bag bag2" viewBox="0 0 150 160" aria-hidden="true" fill="none" stroke="#1c1c20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M58 34 C56 16 94 15 92 34" /><path d="M62 34 C61 22 89 21 88 34" opacity=".45"/>
+              <path d="M22 50 C20 38 30 33 75 33 C120 33 130 38 128 52 L132 140 C133 151 124 154 75 154 C27 155 18 151 19 140 Z" fill="#fff"/>
+              <path d="M21 52 C22 92 128 92 128 54 L128 50 C126 40 118 37 75 37 C32 37 22 40 21 50 Z" fill="#fff"/>
+              <path d="M26 58 C38 84 112 84 124 60" opacity=".4"/>
+              <path d="M52 78 L52 100 M98 78 L98 100" />
+              <rect x="45" y="98" width="14" height="12" rx="2" fill="#fff"/><rect x="91" y="98" width="14" height="12" rx="2" fill="#fff"/>
+              <path d="M49 104 h6 M95 104 h6" stroke-width="2"/>
+              <path d="M40 124 C60 128 92 128 112 124" opacity=".55"/>
+              <g opacity=".33" stroke-width="1.6"><path d="M24 146 l14 -14 M30 152 l20 -20 M110 152 l18 -18"/></g>
+              <path d="M128 70 l14 -48" stroke-width="6" stroke="#e8b92f"/><path d="M128 70 l14 -48" stroke-width="2"/><path d="M128 70 l-2 8 l5 -5" fill="#1c1c20"/>
+              <path d="M8 120 C2 100 6 84 14 78 L20 80" opacity=".7"/><circle cx="12" cy="78" r="3" fill="#1c1c20" stroke="none"/>
+              <text x="64" y="70" font-family="Caveat, cursive" font-size="17" font-weight="700" fill="#1c1c20" stroke="none" transform="rotate(-4 75 66)">A B C</text>
+            </svg>
+          </div>
+        </article>
+      </div>
+
+      <div class="sl sl-card" data-z="-8200" data-stop>
+        <article class="cl-card cl-skills">
+          <canvas class="cloud-bg" data-cloud="57" data-kind="card"></canvas>
+          <p class="kick">skills</p>
+          <h2 class="cl-h">My pencil case</h2>
+          <ul class="stickers">
+            <li data-icon="unity">Unity</li><li data-txt="C#" data-col="#512BD4">C#</li><li data-icon="python">Python</li><li data-txt="UE5" data-col="#1c1c20">Unreal Engine 5</li><li data-icon="blender">Blender</li><li data-icon="threedotjs">Three.js &amp; WebGL</li><li data-icon="github">Git &amp; GitHub</li><li data-txt="XR" data-col="#2f6fd6">AR / VR / XR</li>
+          </ul>
+          <p class="hand-list">HTML · CSS · JS · VS Code · Jupyter · Level design · Teaching</p>
+        </article>
+      </div>
+
+      <div class="sl sl-end" data-z="-9700" data-stop>
+        <canvas class="cloud-bg" data-cloud="71" data-kind="bank"></canvas>
+        <p class="end-h">end of the sky ☁</p>
+        <a class="sky-btn" href="#" data-back>← back to the corridor</a>
+      </div>
+
+    </div>
+    <canvas class="wind" id="skywind" aria-hidden="true"></canvas>
+    <div class="plane" id="skyplane" aria-hidden="true">
+      <svg viewBox="0 0 160 110" fill="none" stroke="#1c1c20" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 58 L152 8 L58 74 Z" fill="#fff"/><path d="M58 74 L152 8 L84 100 Z" fill="#fff"/><path d="M58 74 L72 102 L84 100" fill="#fff"/>
+        <path d="M58 74 L152 8" opacity=".5"/><g opacity=".3" stroke-width="1.5"><path d="M66 80 l10 -6 M70 88 l12 -8"/></g>
+      </svg>
+      <span class="trail"></span>
+    </div>
+    <p class="sky-hint" id="skyhint" aria-hidden="true"><span class="desk">scroll</span><span class="touch">swipe up</span> to fly ↑</p>
+  </div>
+  <div class="prog sky-prog" aria-hidden="true"><svg viewBox="0 0 1000 20" preserveAspectRatio="none"><path class="pbg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/><path class="pfg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/></svg></div>
+</section>
+<section class="room bk-room" id="book" aria-label="My Book: Game On, Unity Edition" hidden>
+  <div class="room-bar"><button class="back btn" data-sk="btn" type="button" data-back><span class="arr" aria-hidden="true">←</span> <span>corridor</span></button></div>
+  <div class="room-strip bkh" id="bkh" tabindex="-1">
+    <canvas class="aw-floor bk-floor" aria-hidden="true"></canvas>
+    <div class="aw-cam bk-cam" id="bkcam">
+      <div class="al bk-hero" data-z="0" data-stop>
+        <div class="bk-stage">
+          <svg class="cone bk-cone" aria-hidden="true"></svg>
+          <div class="b3w"><div class="b3d"><div class="b3-pages" aria-hidden="true"></div><div class="b3-back" aria-hidden="true"></div><div class="b3-spine" aria-hidden="true"><span>GAME ON · UNITY EDITION</span></div><div class="b3-front"><img data-src="assets/bk/pg0.jpg" width="688" height="1100" alt="Cover of Game On: Unity Edition by Prajwal Ramesh Ghagre" decoding="async" fetchpriority="high"></div></div></div>
+          <svg class="bk-desk" viewBox="0 0 400 90" aria-hidden="true"></svg>
+        </div>
+        <div class="bk-txt">
+          <p class="slv">room 02 · my book</p>
+          <h2 class="bk-title">Game On<span>Unity Edition</span></h2>
+          <p class="bk-by">by Prajwal Ramesh Ghagre</p>
+          <div class="bk-buy b1"><a class="bk-btn amz" href="https://www.amazon.in/dp/B0FLWH1KC5" target="_blank" rel="noopener"><span class="bi" aria-hidden="true">🛒</span><span>Buy on Amazon</span></a><a class="bk-btn gb" href="https://www.google.co.in/books/edition/Game_On_Unity_Edition/0hmYEQAAQBAJ?hl=en" target="_blank" rel="noopener"><span class="bi" aria-hidden="true">📖</span><span>Read on Google Books</span></a></div>
+        </div>
+      </div>
+      <div class="al al-stop bk-look" data-z="-1700" data-stop data-k="look">
+        <p class="bk-kick">look inside ✎</p>
+        <div class="fbook" id="fbook" tabindex="0" role="group" aria-roledescription="flipbook" aria-label="Flipbook: first pages of Game On: Unity Edition. Use left and right arrow keys to turn pages."></div>
+        <div class="fb-ctl"><button type="button" class="fb-b fb-prev" aria-label="Previous page">‹</button><span class="fb-n" aria-live="polite">1 / 8</span><button type="button" class="fb-b fb-next" aria-label="Next page">›</button></div>
+        <p class="fb-tip"><span class="touch">swipe the page to turn it · tap to zoom</span><span class="desk">drag or click the edge to turn · click the middle to zoom</span></p>
+      </div>
+      <div class="al al-stop bk-in" data-z="-3300" data-stop data-k="in">
+        <h2 class="bk-h">what's inside ✎</h2>
+        <div class="notes">
+          <div class="bnote n1"><b>From an average student to a game developer</b><p>“I was just an average student.” Then a 9&nbsp;pointer in first year, and a switch to the AI branch with “zero coding skills and zero software knowledge”.</p></div>
+          <div class="bnote n2"><b>The turning point</b><p>January 2025: a 5-day Game Development Workshop with Denovate Digital Innovation (Pune). “In just 7 months”: 6 games on Itch.io and a permanent internship with that same studio.</p></div>
+          <div class="bnote n3"><b>Imagination is the power</b><p>“I didn't have a big team or fancy setup. I had ideas — and the courage to start.” His mantra, from Ratan Tata: “Don't evaluate your idea. Just start working.”</p></div>
+          <div class="bnote n4"><b>Why this book?</b><p>“I'm not a Unity expert. I'm just a 20-year-old game developer who started from zero” — a guide to building a game portfolio, from scratch to success.</p><p class="sig">“if I can do it, so can you.”</p></div>
+        </div>
+      </div>
+      <div class="al al-stop bk-end" data-z="-4900" data-stop>
+        <div class="bk-endc">
+          <p class="bk-lets">Let's build games.<br>Let's build dreams.<br>Let's begin.</p>
+          <p class="bk-meta">Game On: Unity Edition · Kindle eBook &amp; paperback · published 22 August 2025</p>
+          <div class="bk-buy b2"><a class="bk-btn amz" href="https://www.amazon.in/dp/B0FLWH1KC5" target="_blank" rel="noopener"><span class="bi" aria-hidden="true">🛒</span><span>Buy on Amazon</span></a><a class="bk-btn gb" href="https://www.google.co.in/books/edition/Game_On_Unity_Edition/0hmYEQAAQBAJ?hl=en" target="_blank" rel="noopener"><span class="bi" aria-hidden="true">📖</span><span>Read on Google Books</span></a></div>
+          <a class="sky-btn aw-back" href="#" data-back><span>← corridor</span></a>
+        </div>
+      </div>
+    </div>
+    <p class="sky-hint aw-hint bk-hint" aria-hidden="true"><span class="desk">scroll</span><span class="touch">swipe up</span> to look inside ↑</p>
+  </div>
+  <div class="prog sky-prog" aria-hidden="true"><svg viewBox="0 0 1000 20" preserveAspectRatio="none"><path class="pbg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/><path class="pfg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/></svg></div>
+  <div class="bk-lb" id="bklb" role="dialog" aria-modal="true" aria-label="Page zoom" hidden><button type="button" class="lb-x" aria-label="Close">✕</button><div class="bk-lbs"><img alt=""></div><p class="bk-lbt"><span class="touch">pinch or tap to zoom more</span><span class="desk">click to zoom more</span></p></div>
+</section>
+<section class="room" id="experience" aria-label="Experience" hidden>
+  <div class="room-bar"><button class="back btn" data-sk="btn" type="button" data-back><span class="arr" aria-hidden="true">←</span> <span>hallway</span></button><span class="room-title"><small>room 02</small> Experience</span></div>
+  <div class="strip room-strip" tabindex="-1">
+
+    <div class="blk blk-head reveal"><p class="slv">room 02 · experience</p><h2>Work experience<svg class="ul" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true"><path data-wave d=""/></svg></h2>
+      <p class="lead">Interning since my 2nd year of engineering. Walk the map: every checkpoint is a job.</p></div>
+    <div class="blk blk-journey">
+      <div class="journey" id="journey"><svg class="jpath" aria-hidden="true"><path class="bg-path" d=""/><path class="fg-path" d=""/></svg>
+        <div id="walker" aria-hidden="true"><svg viewBox="0 0 46 46"><rect x="10" y="12" width="24" height="24" rx="3"/><circle cx="18" cy="22" r="2.2" class="fill"/><circle cx="27" cy="22" r="2.2" class="fill"/><path d="M17 29 q5 4 10 0"/><path d="M14 36 l-3 7 M30 36 l3 7"/></svg></div>
+        <ol class="cps"><li class="cp" data-sk="box"><span class="dot" aria-hidden="true"></span><span class="when">Jan 2025 → present</span><h3>Intern Game Developer</h3><p class="org">Denovate Digital Technologies · Pune (remote)</p><p>Picked from ~180 students. Worked on 15+ Unity games and published 6+ on itch.io; offered a pre-placement opportunity.</p></li>
+<li class="cp" data-sk="box"><span class="dot" aria-hidden="true"></span><span class="when">From Aug 2025</span><h3>Python &amp; Game Dev Teaching Intern</h3><p class="org">Save Computer Institute · Nagpur</p><p>Taught Python and game-development basics to beginners, with hands-on practice projects.</p></li>
+<li class="cp" data-sk="box"><span class="dot" aria-hidden="true"></span><span class="when">Current</span><h3>HR Intern</h3><p class="org">Rural Games</p><p>HR internship at a games company, alongside my game-dev work.</p></li>
+<li class="cp" data-sk="box"><span class="dot" aria-hidden="true"></span><span class="when">2026</span><h3>Local Organizer</h3><p class="org">GameJamPlus 10th Edition · India</p><p>Helping run the Indian side of a global game-jam marathon.</p></li>
+<li class="cp" data-sk="box"><span class="dot" aria-hidden="true"></span><span class="when">Next</span><h3>Your studio?</h3><p class="org">Open to game-dev roles &amp; workshops</p><p>Let's talk: LinkedIn is in the Social room →</p></li></ol></div></div>
+    <div class="blk blk-end"><p class="hand">end of the room</p><a class="btn" data-sk="btn" href="#"  data-back><span>back to the hallway</span> <span class="arr" aria-hidden="true">→</span></a></div>
+  </div>
+  <div class="prog" aria-hidden="true"><svg viewBox="0 0 1000 20" preserveAspectRatio="none"><path class="pbg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/><path class="pfg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/></svg></div>
+</section>
+<section class="room" id="projects" aria-label="Projects" hidden>
+  <div class="room-bar"><button class="back btn" data-sk="btn" type="button" data-back><span class="arr" aria-hidden="true">←</span> <span>hallway</span></button><span class="room-title"><small>room 03</small> Projects</span></div>
+  <div class="strip room-strip" tabindex="-1">
+
+    <div class="blk blk-head reveal"><p class="slv">room 03 · projects · boss level</p><h2>IFERTS<svg class="ul" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true"><path data-wave d=""/></svg></h2>
+      <p class="sub">Industrial Fire Emergency Response Training Simulator</p>
+      <p class="lead">A 3D fire-safety trainer that runs in an ordinary web browser, built with Three.js and WebGL. You walk through a virtual factory and handle an electrical (Class C) fire from start to finish. No headset needed, and it's built so VR/XR can be added later.</p>
+      <div class="btns"><a class="btn solid" data-sk="btn" href="https://iferts-simulator.vercel.app" target="_blank" rel="noopener" ><span>Play the live demo</span> <span class="arr" aria-hidden="true">→</span></a></div></div>
+    <div class="blk blk-shots">
+      <figure class="shot big reveal"><img src="assets/iferts_play_04_ingame.jpg" alt="IFERTS in-game view of the virtual factory" loading="lazy"><figcaption>inside the virtual factory</figcaption></figure>
+      <figure class="shot reveal"><img src="assets/iferts_play_09_pass_spray.jpg" alt="Using the extinguisher with the PASS method" loading="lazy"><figcaption>PASS: pull · aim · squeeze · sweep</figcaption></figure>
+      <figure class="shot reveal"><img src="assets/iferts_play_07_ppe_done.jpg" alt="PPE equipped in IFERTS" loading="lazy"><figcaption>suit up with PPE first</figcaption></figure>
+    </div>
+    <div class="blk blk-text reveal">
+      <h3 class="hand h3">The mission, step by step</h3>
+      <ol class="steps"><li>Wear PPE</li><li>Pick the right extinguisher</li><li>Pull · Aim · Squeeze · Sweep</li><li>Put out the fire</li><li>Raise the alarm</li><li>Shut down machines</li><li>Evacuate</li></ol>
+      <p>A finite-state machine keeps every step in order, an event-driven design connects the modules, and every procedural mistake gets logged.</p>
+      <div class="paper-card" data-sk="box"><span class="pill">research paper · submitted</span>
+        <h4>IFERTS: Industrial Fire Emergency Response Training Simulator, a Web-Based 3D Interactive Training System with VR/XR Readiness</h4>
+        <p>Submitted to ICETEMS 2027, results awaited. Team: Saloni Ramteke, Shravani Shinde, Srushti Kature, Siddhant Fulzele &amp; Prajwal Ghagre, Dept. of AI, G H Raisoni College of Engineering &amp; Management.</p></div></div>
+    <div class="blk blk-book">
+      <div class="book3d reveal" id="pbook"><svg class="scrib" aria-hidden="true"><path data-scrib d=""/></svg><div class="cover"><img src="assets/book_cover.jpg" alt="Cover of Game On: Unity Edition by Prajwal Ghagre" width="700" height="1119" loading="lazy"></div><span class="stamp">self-<br>published<br>at 20</span></div></div>
+    <div class="blk blk-text book-txt reveal"><p class="slv">the book</p>
+      <h3 class="h3big">Game On: Unity Edition</h3>
+      <p class="sub">The Developer's Guide to Building a Game Portfolio from Scratch to Success</p>
+      <p>A beginner-friendly, hands-on guide to making games in Unity, for students who want to go from zero to a portfolio of shipped games.</p>
+      <ul><li>20–30 publishers said no, so I self-published it on Amazon KDP</li><li>Available worldwide on Amazon and Google Books</li><li>A college HOD kept it on display at one of my workshops</li></ul>
+      <div class="btns"><a class="btn solid" data-sk="btn" href="https://www.amazon.in/Game-Developers-Building-Portfolio-Scratch-ebook/dp/B0FLWH1KC5" target="_blank" rel="noopener" ><span>Get it on Amazon.in</span> <span class="arr" aria-hidden="true">→</span></a><a class="btn" data-sk="btn" href="https://www.amazon.com/dp/B0FLWH1KC5" target="_blank" rel="noopener" ><span>Amazon.com</span> <span class="arr" aria-hidden="true">→</span></a></div></div>
+    <div class="blk blk-text reveal"><p class="slv">more code</p><h3 class="h3big">On GitHub</h3>
+      <p>Smaller experiments live on my GitHub: an AR chemistry project, an AI voice assistant, a quotes website and <i>devsaathi</i>.</p>
+      <ul class="repos"><li><a href="https://github.com/PrajwalGhagre/devsaathi" target="_blank" rel="noopener">devsaathi</a></li><li><a href="https://github.com/PrajwalGhagre/Ar-chemistry" target="_blank" rel="noopener">Ar-chemistry</a></li><li><a href="https://github.com/PrajwalGhagre/AI-Voice-Assistant" target="_blank" rel="noopener">AI-Voice-Assistant</a></li><li><a href="https://github.com/PrajwalGhagre/Quotefule.com" target="_blank" rel="noopener">Quotefule.com</a></li></ul>
+      <div class="btns"><a class="btn" data-sk="btn" href="https://github.com/PrajwalGhagre" target="_blank" rel="noopener" ><span>See my GitHub</span> <span class="arr" aria-hidden="true">→</span></a></div></div>
+    <div class="blk blk-end"><p class="hand">end of the room</p><a class="btn" data-sk="btn" href="#"  data-back><span>back to the hallway</span> <span class="arr" aria-hidden="true">→</span></a></div>
+  </div>
+  <div class="prog" aria-hidden="true"><svg viewBox="0 0 1000 20" preserveAspectRatio="none"><path class="pbg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/><path class="pfg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/></svg></div>
+</section>
+<section class="room" id="games" aria-label="Games" hidden>
+  <div class="room-bar"><button class="back btn" data-sk="btn" type="button" data-back><span class="arr" aria-hidden="true">←</span> <span>hallway</span></button><span class="room-title"><small>room 04</small> Games</span></div>
+  <div class="strip room-strip" tabindex="-1">
+
+    <div class="blk blk-head reveal"><p class="slv">room 04 · games</p><h2>Games I shipped<svg class="ul" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true"><path data-wave d=""/></svg></h2>
+      <p class="lead">9 games live on itch.io, all free and playable right in your browser. Hover a card (or tap it) to play.</p>
+      <div class="runner" data-sk="box"><div class="runner-top"><b>Sketch Runner</b><span id="score">score 0 · best 0</span></div>
+        <canvas id="run" tabindex="0" aria-label="Mini game: tap, click or press space to jump over the doodles"></canvas></div></div>
+<a class="card blk-card reveal" data-sk="box" href="https://prajwal-ghagre.itch.io/endless-cube-runner" target="_blank" rel="noopener">
+  <div class="thumb"><img src="assets/game_endless-cube-runner.jpg" alt="Endless Cube Runner cover art" loading="lazy" width="315" height="250"><span class="play">▶ play</span></div>
+  <h3>Endless Cube Runner</h3><p>A fast cube on an endless lane. Dodge the hurdles, chase the high score.</p>
+  <div class="meta"><span>Runner</span><span>browser · free</span></div></a>
+<a class="card blk-card reveal" data-sk="box" href="https://prajwal-ghagre.itch.io/endless-ninja-runner" target="_blank" rel="noopener">
+  <div class="thumb"><img src="assets/game_endless-ninja-runner.jpg" alt="Endless Ninja Runner cover art" loading="lazy" width="315" height="250"><span class="play">▶ play</span></div>
+  <h3>Endless Ninja Runner</h3><p>Run, jump and keep the ninja alive for as long as you can.</p>
+  <div class="meta"><span>Runner</span><span>browser · free</span></div></a>
+<a class="card blk-card reveal" data-sk="box" href="https://prajwal-ghagre.itch.io/space-calculator" target="_blank" rel="noopener">
+  <div class="thumb"><img src="assets/game_space-calculator.jpg" alt="Space Calculator cover art" loading="lazy" width="315" height="250"><span class="play">▶ play</span></div>
+  <h3>Space Calculator</h3><p>A space-themed math game where you solve arithmetic challenges.</p>
+  <div class="meta"><span>Educational</span><span>browser · free</span></div></a>
+<a class="card blk-card reveal" data-sk="box" href="https://prajwal-ghagre.itch.io/snake-ladder" target="_blank" rel="noopener">
+  <div class="thumb"><img src="assets/game_snake-ladder.jpg" alt="Snake &amp; Ladder cover art" loading="lazy" width="315" height="250"><span class="play">▶ play</span></div>
+  <h3>Snake &amp; Ladder</h3><p>Classic Snake &amp; Ladder with a modern touch: roll, climb, avoid the snakes.</p>
+  <div class="meta"><span>Board game</span><span>browser · free</span></div></a>
+<a class="card blk-card reveal" data-sk="box" href="https://prajwal-ghagre.itch.io/snake-evolution-eat-grow" target="_blank" rel="noopener">
+  <div class="thumb"><img src="assets/game_snake-evolution-eat-grow.jpg" alt="Snake Evolution: Eat &amp; Grow cover art" loading="lazy" width="315" height="250"><span class="play">▶ play</span></div>
+  <h3>Snake Evolution: Eat &amp; Grow</h3><p>Classic snake, reimagined. Eat, grow longer, don&#x27;t bite yourself.</p>
+  <div class="meta"><span>Arcade</span><span>browser · free</span></div></a>
+<a class="card blk-card reveal" data-sk="box" href="https://prajwal-ghagre.itch.io/zombie-tap-rush" target="_blank" rel="noopener">
+  <div class="thumb"><img src="assets/game_zombie-tap-rush.jpg" alt="Zombie Tap Rush cover art" loading="lazy" width="315" height="250"><span class="play">▶ play</span></div>
+  <h3>Zombie Tap Rush</h3><p>Tap-to-shoot arcade: hold off waves of zombies.</p>
+  <div class="meta"><span>Arcade</span><span>browser · free</span></div></a>
+<a class="card blk-card reveal" data-sk="box" href="https://prajwal-ghagre.itch.io/soap-cutter-relaxing-asmr-experience" target="_blank" rel="noopener">
+  <div class="thumb"><img src="assets/game_soap-cutter-relaxing-asmr-experience.jpg" alt="Soap Cutter cover art" loading="lazy" width="315" height="250"><span class="play">▶ play</span></div>
+  <h3>Soap Cutter</h3><p>A relaxing soap-cutting mini-game. Cut, slice and shave for satisfying ASMR vibes.</p>
+  <div class="meta"><span>Simulation</span><span>browser · free</span></div></a>
+<a class="card blk-card reveal" data-sk="box" href="https://prajwal-ghagre.itch.io/gamestone-saga-match-3-puzzle-adventure" target="_blank" rel="noopener">
+  <div class="thumb"><img src="assets/game_gamestone-saga-match-3-puzzle-adventure.jpg" alt="Gamestone Saga cover art" loading="lazy" width="315" height="250"><span class="play">▶ play</span></div>
+  <h3>Gamestone Saga</h3><p>Match 3 colourful gems, clear levels and unlock the saga of stones.</p>
+  <div class="meta"><span>Puzzle</span><span>browser · free</span></div></a>
+<a class="card blk-card reveal" data-sk="box" href="https://prajwal-ghagre.itch.io/emoji" target="_blank" rel="noopener">
+  <div class="thumb"><img src="assets/game_emoji.jpg" alt="Emoji Popper cover art" loading="lazy" width="315" height="250"><span class="play">▶ play</span></div>
+  <h3>Emoji Popper</h3><p>Tap &amp; pop the right emojis before time runs out. A pure reflex challenge.</p>
+  <div class="meta"><span>Reflex</span><span>browser · free</span></div></a>
+    <div class="blk blk-more reveal"><p class="hand big-hand">want more?</p><a class="btn solid" data-sk="btn" href="https://prajwal-ghagre.itch.io/" target="_blank" rel="noopener" ><span>See all on itch.io</span> <span class="arr" aria-hidden="true">→</span></a></div>
+    <div class="blk blk-end"><p class="hand">end of the room</p><a class="btn" data-sk="btn" href="#"  data-back><span>back to the hallway</span> <span class="arr" aria-hidden="true">→</span></a></div>
+  </div>
+  <div class="prog" aria-hidden="true"><svg viewBox="0 0 1000 20" preserveAspectRatio="none"><path class="pbg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/><path class="pfg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/></svg></div>
+</section>
+<section class="room" id="workshops" aria-label="Teaching &amp; Workshops" hidden>
+  <div class="room-bar"><button class="back btn" data-sk="btn" type="button" data-back><span class="arr" aria-hidden="true">←</span> <span>hallway</span></button><span class="room-title"><small>room 05</small> Teaching &amp; Workshops</span></div>
+  <div class="strip room-strip" tabindex="-1">
+
+    <div class="blk blk-head reveal"><p class="slv">room 05 · teaching &amp; workshops</p><h2>I teach, too<svg class="ul" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true"><path data-wave d=""/></svg></h2>
+      <p class="lead">Hands-on sessions where students don't just watch slides: they build a playable game before they leave.</p></div>
+    <div class="blk blk-teach reveal">
+      <h3 class="hand h3">Teaching experience</h3>
+      <ul class="edu">
+        <li data-sk="box"><span class="when">one full semester · my 6th sem</span><b>Visiting faculty · IIIT Nagpur</b><span>Taught Unity game development to undergraduates: C# scripting, game mechanics and publishing, while still a student myself.</span></li>
+        <li data-sk="box"><span class="when">from Aug 2025</span><b>Teaching intern · Save Computer Institute</b><span>Taught Python and game-development basics to beginners with hands-on practice projects.</span></li>
+      </ul>
+      <figure class="pola mini"><span class="tape t1"></span><div class="pimg"><img src="assets/ws_iiit.jpg" alt="Prajwal teaching game development at IIIT Nagpur" loading="lazy"></div><figcaption><b>IIIT Nagpur</b></figcaption></figure>
+    </div>
+    <div class="blk blk-head small reveal"><h3 class="hand h3big">Workshops</h3><p class="lead">Colleges around Nagpur where I've run hands-on sessions.</p></div>
+<figure class="pola blk-card reveal"><span class="tape t1"></span><div class="pimg"><img src="assets/ws_pce.jpg" alt="Prajwal at Priyadarshini College of Engineering, Nagpur" loading="lazy"></div>
+<figcaption><b>Priyadarshini College of Engineering, Nagpur</b><span>“Build Your First Game: Endless Cube Runner”, a hands-on Unity workshop. 4 Sep 2026 · 4 hours · 5/5 student feedback.</span></figcaption></figure>
+<figure class="pola blk-card reveal"><span class="tape t1"></span><div class="pimg"><img src="assets/ws_raisoni_unity.jpg" alt="Prajwal at G H Raisoni College, Nagpur" loading="lazy"></div>
+<figcaption><b>G H Raisoni College, Nagpur</b><span>Unity Game Development workshop for 60+ students.</span></figcaption></figure>
+<figure class="pola blk-card reveal"><span class="tape t1"></span><div class="pimg"><img src="assets/ws_arvr1.jpg" alt="Prajwal at AR/VR Lab, G H Raisoni College" loading="lazy"></div>
+<figcaption><b>AR/VR Lab, G H Raisoni College</b><span>Hands-on AR/VR session at the Centre of Excellence AR/VR Lab.</span></figcaption></figure>
+<figure class="pola blk-card reveal tall"><span class="tape t1"></span><div class="pimg"><img src="assets/ws_arvr2.jpg" alt="Prajwal at AR/VR Lab: the follow-up" loading="lazy"></div>
+<figcaption><b>AR/VR Lab: the follow-up</b><span>A second AR/VR workshop at the same lab, a few months later.</span></figcaption></figure>
+    <div class="blk blk-more reveal"><p class="hand big-hand">want one at your college?</p><a class="btn solid" data-sk="btn" href="https://www.linkedin.com/in/prajwal-ghagre-78bb31343/" target="_blank" rel="noopener" ><span>Invite me on LinkedIn</span> <span class="arr" aria-hidden="true">→</span></a></div>
+    <div class="blk blk-end"><p class="hand">end of the room</p><a class="btn" data-sk="btn" href="#"  data-back><span>back to the hallway</span> <span class="arr" aria-hidden="true">→</span></a></div>
+  </div>
+  <div class="prog" aria-hidden="true"><svg viewBox="0 0 1000 20" preserveAspectRatio="none"><path class="pbg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/><path class="pfg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/></svg></div>
+</section>
+<section class="room aw-room" id="achievements" aria-label="Awards &amp; Achievements" hidden>
+  <div class="room-bar"><button class="back btn" data-sk="btn" type="button" data-back><span class="arr" aria-hidden="true">←</span> <span>corridor</span></button></div>
+  <div class="room-strip awh" id="awh" tabindex="-1">
+    <canvas class="aw-floor" aria-hidden="true"></canvas>
+    <div class="aw-cam" id="awcam">
+      <div class="al al-hero" data-z="0" data-stop>
+        <p class="slv">room 06 · awards &amp; achievements</p>
+        <div class="hofw"><svg class="laurel" viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true"></svg><h2 class="hof">Hall of Fame</h2></div>
+        <p class="lead">National and international recognition for game development and writing, all at 20.</p>
+      </div>
+      <div class="al al-stop" data-z="-1700" data-stop data-k="mbr">
+        <div class="aw-scene n3">
+          <svg class="cone" aria-hidden="true"></svg>
+          <span class="stopno" aria-hidden="true">01</span>
+          <div class="pols"><button type="button" class="pol p0" data-full="assets/aw/mbr3.jpg" data-cap="Emerging Game Developer Award 2025" aria-label="Enlarge photo: Prajwal holding the Emerging Game Developer Award 2025 trophy"><span class="tape"></span><img data-src="assets/aw/mbr3.jpg" width="648" height="1200" alt="Prajwal holding the Emerging Game Developer Award 2025 trophy" decoding="async"></button><button type="button" class="pol p1" data-full="assets/aw/mbr1.jpg" data-cap="Emerging Game Developer Award 2025" aria-label="Enlarge photo: Emerging Game Developer Award 2025: trophy and certificate close-up"><span class="tape"></span><img data-src="assets/aw/mbr1_s.jpg" width="285" height="380" alt="Emerging Game Developer Award 2025: trophy and certificate close-up" decoding="async"></button><button type="button" class="pol p2" data-full="assets/aw/mbr2.jpg" data-cap="Emerging Game Developer Award 2025" aria-label="Enlarge photo: Magic Book of Record award set: trophy, medal and certificates"><span class="tape"></span><img data-src="assets/aw/mbr2_s.jpg" width="171" height="380" alt="Magic Book of Record award set: trophy, medal and certificates" decoding="async"></button></div>
+          <svg class="ped" viewBox="0 0 300 120" aria-hidden="true"></svg>
+          <div class="lbl"><svg class="lbl-b" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg><span class="kind">National award</span><h3>Emerging Game Developer Award 2025</h3><p class="org">Magic Book of Record (“Best Achievers’ Award”)</p><p class="meta"><span>New Delhi</span><span>13 September 2025</span></p></div>
+        </div>
+      </div>
+      <div class="al al-stop" data-z="-3300" data-stop data-k="sah">
+        <div class="aw-scene n2">
+          <svg class="cone" aria-hidden="true"></svg>
+          <span class="stopno" aria-hidden="true">02</span>
+          <div class="pols"><button type="button" class="pol p0" data-full="assets/aw/sah2.jpg" data-cap="Sahyadri Ratna Award 2025" aria-label="Enlarge photo: Prajwal on stage receiving the Sahyadri Ratna Award 2025"><span class="tape"></span><img data-src="assets/aw/sah2.jpg" width="1200" height="800" alt="Prajwal on stage receiving the Sahyadri Ratna Award 2025" decoding="async"></button><button type="button" class="pol p1" data-full="assets/aw/sah1.jpg" data-cap="Sahyadri Ratna Award 2025" aria-label="Enlarge photo: Sahyadri Ratna Award 2025 certificate and trophy"><span class="tape"></span><img data-src="assets/aw/sah1_s.jpg" width="380" height="269" alt="Sahyadri Ratna Award 2025 certificate and trophy" decoding="async"></button></div>
+          <svg class="ped" viewBox="0 0 300 120" aria-hidden="true"></svg>
+          <div class="lbl"><svg class="lbl-b" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg><span class="kind">State-level award</span><h3>Sahyadri Ratna Award 2025</h3><p class="lsub">Rajyastariya Sahyadri Ratna Puraskar</p><p class="org">Talent Katta Maharashtra</p><p class="meta"><span>Pune</span><span>Category “Game Development Gyan Prasar”</span><span>14 December 2025</span></p></div>
+        </div>
+      </div>
+      <div class="al al-stop" data-z="-4900" data-stop data-k="kar">
+        <div class="aw-scene n3 n3l">
+          <svg class="cone" aria-hidden="true"></svg>
+          <span class="stopno" aria-hidden="true">03</span>
+          <div class="pols"><button type="button" class="pol p0" data-full="assets/aw/kar3.jpg" data-cap="Gunavant Vidyarthi Satkar" aria-label="Enlarge photo: Prajwal on stage receiving the Gunavant Vidyarthi Satkar"><span class="tape"></span><img data-src="assets/aw/kar3.jpg" width="1200" height="800" alt="Prajwal on stage receiving the Gunavant Vidyarthi Satkar" decoding="async"></button><button type="button" class="pol p1" data-full="assets/aw/kar1.jpg" data-cap="Gunavant Vidyarthi Satkar" aria-label="Enlarge photo: Gunavant Vidyarthi Satkar: Prashasti Patra and memento"><span class="tape"></span><img data-src="assets/aw/kar1_s.jpg" width="380" height="253" alt="Gunavant Vidyarthi Satkar: Prashasti Patra and memento" decoding="async"></button><button type="button" class="pol p2" data-full="assets/aw/kar2.jpg" data-cap="Gunavant Vidyarthi Satkar" aria-label="Enlarge photo: Gunavant Vidyarthi Satkar memento and certificate"><span class="tape"></span><img data-src="assets/aw/kar2_s.jpg" width="380" height="266" alt="Gunavant Vidyarthi Satkar memento and certificate" decoding="async"></button></div>
+          <svg class="ped" viewBox="0 0 300 120" aria-hidden="true"></svg>
+          <div class="lbl"><svg class="lbl-b" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg><span class="kind">Prashasti Patra</span><h3>Gunavant Vidyarthi Satkar</h3><p class="org">Bhoyar Pawar Vidyarthi Mandal</p><p class="meta"><span>Nagpur (Karanja)</span><span>Prashasti Patra honouring his International Icon Award 2025</span><span>30 August 2026</span></p></div>
+        </div>
+      </div>
+      <div class="al al-stop" data-z="-6500" data-stop data-k="lit">
+        <div class="aw-scene n1">
+          <svg class="cone" aria-hidden="true"></svg>
+          <span class="stopno" aria-hidden="true">04</span>
+          <div class="pols"><button type="button" class="pol p0" data-full="assets/aw/lit.jpg" data-cap="Best Non-Fiction: “Game On: Unity Edition”" aria-label="Enlarge photo: The Literature Times nominee card: Best Non-Fiction, Game On: Unity Edition"><span class="tape"></span><img data-src="assets/aw/lit.jpg" width="1023" height="1124" alt="The Literature Times nominee card: Best Non-Fiction, Game On: Unity Edition" decoding="async"></button></div>
+          <svg class="ped" viewBox="0 0 300 120" aria-hidden="true"></svg>
+          <div class="lbl"><svg class="lbl-b" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg><span class="kind nom">Nominee</span><h3>Best Non-Fiction: “Game On: Unity Edition”</h3><p class="org">The Literature Times · Legacy of Literature Awards, Season 3</p><p class="meta"><span>2025</span></p></div>
+        </div>
+      </div>
+      <div class="al al-stop" data-z="-8100" data-stop data-k="ds">
+        <div class="aw-scene n0 is-clip">
+          <svg class="cone" aria-hidden="true"></svg>
+          <span class="stopno" aria-hidden="true">05</span>
+          <div class="pols"><div class="clip-card"><span class="tape"></span><p class="clip-mast">Unstoppable India · Feb 10, 2026</p><p class="clip-head">Dream Spin Publication Celebrates Excellence: The Top 20 Authors Shaping Modern Literature</p><p class="clip-line"><b>15.</b> Author:- “Prajwal Ghagre” Book name:- “Game on-unity edition”</p><a class="clip-go" href="https://www.unstoppableindia.net/post/dream-spin-publication-celebrates-excellence-the-top-20-authors-shaping-modern-literature" target="_blank" rel="noopener">read the article →</a></div></div>
+          <svg class="ped" viewBox="0 0 300 120" aria-hidden="true"></svg>
+          <div class="lbl"><svg class="lbl-b" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg><span class="kind">Featured author</span><h3>Top 20 Authors Shaping Modern Literature (#15)</h3><p class="org">Dream Spin Publication</p><p class="meta"><span>Featured in Unstoppable India</span><span>10 Feb 2026</span></p></div>
+        </div>
+      </div>
+      <div class="al al-stop" data-z="-9700" data-stop data-k="rise">
+        <div class="aw-scene n1">
+          <svg class="cone" aria-hidden="true"></svg>
+          <span class="stopno" aria-hidden="true">06</span>
+          <div class="pols"><button type="button" class="pol p0" data-full="assets/aw/rise.jpg" data-cap="Co-Author · “Rise Beyond Limits” anthology" aria-label="Enlarge photo: Rise Beyond Limits: certificate of publication and medal"><span class="tape"></span><img data-src="assets/aw/rise.jpg" width="1200" height="793" alt="Rise Beyond Limits: certificate of publication and medal" decoding="async"></button></div>
+          <svg class="ped" viewBox="0 0 300 120" aria-hidden="true"></svg>
+          <div class="lbl"><svg class="lbl-b" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg><span class="kind">Published</span><h3>Co-Author · “Rise Beyond Limits” anthology</h3><p class="org">Blue Cloud Publishers</p><p class="meta"><span>ISBN 978-81-997386-6-9</span><span>2026</span><span>Certificate of publication + medal</span></p></div>
+        </div>
+      </div>
+      <div class="al al-stop" data-z="-11300" data-stop data-k="mar">
+        <div class="aw-scene n2">
+          <svg class="cone" aria-hidden="true"></svg>
+          <span class="stopno" aria-hidden="true">07</span>
+          <div class="pols"><button type="button" class="pol p0" data-full="assets/aw/mar1.jpg" data-cap="3 km Marathon Run · Finisher 🏅" aria-label="Enlarge photo: Prajwal with his finisher medal at the Law Forum Nagpur 3 km run"><span class="tape"></span><img data-src="assets/aw/mar1.jpg" width="540" height="1200" alt="Prajwal with his finisher medal at the Law Forum Nagpur 3 km run" decoding="async"></button><button type="button" class="pol p1" data-full="assets/aw/mar2.jpg" data-cap="3 km Marathon Run · Finisher 🏅" aria-label="Enlarge photo: Law Forum Nagpur 3 km Marathon Run certificate"><span class="tape"></span><img data-src="assets/aw/mar2_s.jpg" width="380" height="214" alt="Law Forum Nagpur 3 km Marathon Run certificate" decoding="async"></button></div>
+          <svg class="ped" viewBox="0 0 300 120" aria-hidden="true"></svg>
+          <div class="lbl"><svg class="lbl-b" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg><span class="kind">Run</span><h3>3 km Marathon Run · Finisher 🏅</h3><p class="org">Law Forum Nagpur</p><p class="meta"><span>4 January 2026</span></p></div>
+        </div>
+      </div>
+      <div class="al al-stop al-also" data-z="-12900" data-stop>
+        <div class="aw-board"><p class="kick">also unlocked ✎</p><div class="minis"><figure class="mini"><button type="button" class="pol pm" data-full="assets/aw_college.jpg" data-cap="Academic recognition" aria-label="Enlarge photo: Academic recognition"><span class="tape"></span><img data-src="assets/aw_college.jpg" alt="Academic recognition" decoding="async"></button><figcaption><b>Academic recognition</b><span>G H Raisoni College &amp; IIIT Nagpur</span></figcaption></figure><figure class="mini"><button type="button" class="pol pm" data-full="assets/aw_artemis.jpg" data-cap="My name flies on Artemis II" aria-label="Enlarge photo: My name flies on Artemis II"><span class="tape"></span><img data-src="assets/aw_artemis.jpg" alt="My name flies on Artemis II" decoding="async"></button><figcaption><b>My name flies on Artemis II</b><span>NASA · “Send Your Name”</span></figcaption></figure><figure class="mini"><button type="button" class="pol pm" data-full="assets/aw_gjp.jpg" data-cap="GameJamPlus 10th Edition" aria-label="Enlarge photo: GameJamPlus 10th Edition"><span class="tape"></span><img data-src="assets/aw_gjp.jpg" alt="GameJamPlus 10th Edition" decoding="async"></button><figcaption><b>GameJamPlus 10th Edition</b><span>Local Organizer · India</span></figcaption></figure></div><p class="kick k2">in the news</p><div class="newsrow"><a class="news" href="https://timesofindia.indiatimes.com/city/nagpur/reluctant-engr-now-gaming-industry-developer-writer/articleshow/133164984.cms" target="_blank" rel="noopener"><span class="src">The Times of India · Nagpur · 12 Aug 2026</span><b>Reluctant engr now gaming industry developer &amp; writer</b><span class="go">read →</span></a><a class="news" href="https://www.nagpurtoday.in/nagpur-youth-shines-as-game-developer-author-and-award-winner-at-just-20/" target="_blank" rel="noopener"><span class="src">Nagpur Today · 20 Sep 2025</span><b>Nagpur youth shines as game developer, author, and award winner at just 20</b><span class="go">read →</span></a></div></div>
+      </div>
+      <div class="al al-stop al-shelf" data-z="-14500" data-stop>
+        <div class="shelf"><h2 class="sh-h">the trophy shelf</h2>
+          <div class="srow"><button type="button" class="smini" data-go="mbr" aria-label="Fly to: Emerging Game Developer Award 2025"><span class="tape"></span><img data-src="assets/aw/mbr3_s.jpg" alt="" decoding="async"><span class="mcap">Emerging Game Developer Award </span></button><button type="button" class="smini" data-go="sah" aria-label="Fly to: Sahyadri Ratna Award 2025"><span class="tape"></span><img data-src="assets/aw/sah2_s.jpg" alt="" decoding="async"><span class="mcap">Sahyadri Ratna Award 2025</span></button><button type="button" class="smini" data-go="kar" aria-label="Fly to: Gunavant Vidyarthi Satkar"><span class="tape"></span><img data-src="assets/aw/kar3_s.jpg" alt="" decoding="async"><span class="mcap">Gunavant Vidyarthi Satkar</span></button><button type="button" class="smini" data-go="lit" aria-label="Fly to: Best Non-Fiction: “Game On: Unity Edition”"><span class="tape"></span><img data-src="assets/aw/lit_s.jpg" alt="" decoding="async"><span class="mcap">Best Non-Fiction</span></button></div><svg class="plank" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div class="srow"><button type="button" class="smini" data-go="ds" aria-label="Fly to: Top 20 Authors Shaping Modern Literature (#15)"><span class="tape"></span><span class="mclip">Top 20<br>#15</span><span class="mcap">Top 20 Authors Shaping Modern </span></button><button type="button" class="smini" data-go="rise" aria-label="Fly to: Co-Author · “Rise Beyond Limits” anthology"><span class="tape"></span><img data-src="assets/aw/rise_s.jpg" alt="" decoding="async"><span class="mcap">Co-Author</span></button><button type="button" class="smini" data-go="mar" aria-label="Fly to: 3 km Marathon Run · Finisher 🏅"><span class="tape"></span><img data-src="assets/aw/mar1_s.jpg" alt="" decoding="async"><span class="mcap">3 km Marathon Run</span></button></div><svg class="plank" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div class="srow r3"><div class="tcard"><svg class="tsk" viewBox="0 0 120 120" aria-hidden="true"><path d="M38 22h44v26c0 14-10 24-22 24S38 62 38 48z"/><path d="M38 30H24c0 14 6 22 16 22M82 30h14c0 14-6 22-16 22"/><path d="M60 72v16M44 100h32M48 88h24v12H48z"/><path class="red" d="M60 34l4 8 9 1-7 6 2 9-8-5-8 5 2-9-7-6 9-1z"/></svg><b>International Icon Award 2025</b><span>International World Records · 2025</span></div><div class="tcard"><svg class="tsk" viewBox="0 0 120 120" aria-hidden="true"><path d="M38 22h44v26c0 14-10 24-22 24S38 62 38 48z"/><path d="M38 30H24c0 14 6 22 16 22M82 30h14c0 14-6 22-16 22"/><path d="M60 72v16M44 100h32M48 88h24v12H48z"/><path class="red" d="M60 34l4 8 9 1-7 6 2 9-8-5-8 5 2-9-7-6 9-1z"/></svg><b>India Book of Records</b><span>India Book of Records (IBR) · 2025</span></div></div><svg class="plank" viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <a class="sky-btn aw-back" href="#" data-back><span>← corridor</span></a>
+        </div>
+      </div>
+    </div>
+    <p class="sky-hint aw-hint" aria-hidden="true"><span class="desk">scroll</span><span class="touch">swipe up</span> to walk in ↑</p>
+  </div>
+  <div class="prog sky-prog" aria-hidden="true"><svg viewBox="0 0 1000 20" preserveAspectRatio="none"><path class="pbg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/><path class="pfg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/></svg></div>
+  <div class="aw-lb" id="awlb" role="dialog" aria-modal="true" aria-label="Photo" hidden><button type="button" class="lb-x" aria-label="Close">✕</button><figure><img alt=""><figcaption></figcaption></figure></div>
+</section>
+<section class="room" id="social" aria-label="Social &amp; Contact" hidden>
+  <div class="room-bar"><button class="back btn" data-sk="btn" type="button" data-back><span class="arr" aria-hidden="true">←</span> <span>hallway</span></button><span class="room-title"><small>room 07</small> Social &amp; Contact</span></div>
+  <div class="strip room-strip" tabindex="-1">
+
+    <div class="blk blk-head reveal"><p class="slv">room 07 · social &amp; contact</p><h2>Say hi<svg class="ul" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true"><path data-wave d=""/></svg></h2>
+      <p class="lead">Hiring a Unity developer, inviting me for a workshop, or just want to talk games? Drop me a line.</p>
+      <div class="btns"><a class="btn solid" data-sk="btn" href="mailto:ghagreprajwal8@gmail.com"  ><span>Email me</span> <span class="arr" aria-hidden="true">→</span></a><a class="btn" data-sk="btn" href="https://www.linkedin.com/in/prajwal-ghagre-78bb31343/" target="_blank" rel="noopener" ><span>LinkedIn</span> <span class="arr" aria-hidden="true">→</span></a></div>
+      <p class="mails"><span>personal</span> <a href="mailto:ghagreprajwal8@gmail.com">ghagreprajwal8@gmail.com</a><br><span>college</span> <a href="mailto:prajwal.ghagre.ee@ghrietn.raisoni.net">prajwal.ghagre.ee@ghrietn.raisoni.net</a></p></div>
+    <div class="blk blk-form reveal"><form class="note-form" id="noteForm" data-sk="box" novalidate>
+      <p class="hand h3">Pass me a note</p>
+      <label>Your name<input name="n" autocomplete="name" required></label>
+      <label>Your message<textarea name="m" rows="4" required></textarea></label>
+      <button class="btn solid" data-sk="btn" type="submit"><span>Send via email</span> <span class="arr" aria-hidden="true">→</span></button>
+      <small>opens your mail app with the note ready to send</small></form></div>
+    <div class="blk blk-socs"><a class="soc blk-card reveal" data-sk="box" href="https://www.linkedin.com/in/prajwal-ghagre-78bb31343/" target="_blank" rel="noopener"><span class="sic" data-ic="in" aria-hidden="true"></span><b>LinkedIn</b><span>Game Developer · Author</span><span class="arr" aria-hidden="true">→</span></a>
+<a class="soc blk-card reveal" data-sk="box" href="https://www.instagram.com/prajwal.ghagre.18/" target="_blank" rel="noopener"><span class="sic" data-ic="ig" aria-hidden="true"></span><b>Instagram</b><span>@prajwal.ghagre.18</span><span class="arr" aria-hidden="true">→</span></a>
+<a class="soc blk-card reveal" data-sk="box" href="https://x.com/GhagrePraju522" target="_blank" rel="noopener"><span class="sic" data-ic="x" aria-hidden="true"></span><b>X / Twitter</b><span>@GhagrePraju522</span><span class="arr" aria-hidden="true">→</span></a>
+<a class="soc blk-card reveal" data-sk="box" href="https://www.youtube.com/channel/UCP17lrvV2mrDMHq9IQ8EUUg" target="_blank" rel="noopener"><span class="sic" data-ic="yt" aria-hidden="true"></span><b>YouTube</b><span>Build With Prajwal</span><span class="arr" aria-hidden="true">→</span></a>
+<a class="soc blk-card reveal" data-sk="box" href="https://github.com/PrajwalGhagre" target="_blank" rel="noopener"><span class="sic" data-ic="gh" aria-hidden="true"></span><b>GitHub</b><span>@PrajwalGhagre</span><span class="arr" aria-hidden="true">→</span></a>
+<a class="soc blk-card reveal" data-sk="box" href="https://prajwal-ghagre.itch.io/" target="_blank" rel="noopener"><span class="sic" data-ic="itch" aria-hidden="true"></span><b>itch.io</b><span>All my games, free to play</span><span class="arr" aria-hidden="true">→</span></a>
+<a class="soc blk-card reveal" data-sk="box" href="https://www.amazon.in/Game-Developers-Building-Portfolio-Scratch-ebook/dp/B0FLWH1KC5" target="_blank" rel="noopener"><span class="sic" data-ic="amz" aria-hidden="true"></span><b>Amazon</b><span>Game On: Unity Edition</span><span class="arr" aria-hidden="true">→</span></a>
+<a class="soc blk-card reveal" data-sk="box" href="https://edu.google.accredible.com/profile/prajwalghagre125187/wallet" target="_blank" rel="noopener"><span class="sic" data-ic="gedu" aria-hidden="true"></span><b>Google for Education</b><span>My credentials</span><span class="arr" aria-hidden="true">→</span></a></div>
+    <div class="blk blk-end"><p class="hand">end of the room</p><a class="btn" data-sk="btn" href="#"  data-back><span>back to the hallway</span> <span class="arr" aria-hidden="true">→</span></a></div>
+  </div>
+  <div class="prog" aria-hidden="true"><svg viewBox="0 0 1000 20" preserveAspectRatio="none"><path class="pbg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/><path class="pfg" d="M4 11 C 200 6, 400 15, 600 9 S 900 13, 996 10"/></svg></div>
+</section>
+
+<div id="pencil" aria-hidden="true"><svg viewBox="0 0 44 44"><g transform="rotate(45 22 22)"><path d="M18 2 h8 v30 l-4 9 l-4 -9 z" fill="#f2c94c" stroke="#232326" stroke-width="1.6" stroke-linejoin="round"/><path d="M18 32 h8 l-4 9 z" fill="#f1dcb4" stroke="#232326" stroke-width="1.4" stroke-linejoin="round"/><path d="M20.6 38 l1.4 3 l1.4 -3 z" fill="#232326"/><path d="M18 2 h8 v5 h-8 z" fill="#e2553f" stroke="#232326" stroke-width="1.4"/><path d="M22 7 v25" stroke="#232326" stroke-width=".8" opacity=".5"/></g></svg></div>
+<canvas id="trail" aria-hidden="true"></canvas>
+</body>
+</html>
